@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#050505" />
     <meta name="description" content="CLUTCH — School Esports Festival 2026" />
+    <script>
+      document.documentElement.classList.add(
+        location.pathname.replace(/\/+$/, "") === "/admin" ? "admin-route" : "public-route",
+      );
+    </script>
     <title>CLUTCH / 26 — School Esports Festival</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1157,8 +1162,21 @@
       }
 
       /* ADMIN */
-      .admin {
+.admin {
         background: #050506;
+      }
+      /* The control console is intentionally isolated at /admin. */
+      html.public-route .admin {
+        display: none;
+      }
+      html.admin-route .nav,
+      html.admin-route main > :not(.admin),
+      html.admin-route footer {
+        display: none;
+      }
+      html.admin-route .admin {
+        min-height: 100vh;
+        padding-top: 120px;
       }
       .admin-gate {
         max-width: 480px;
@@ -1940,7 +1958,7 @@
           <a href="#teams">Teams</a>
           <a href="#organizers">Our Team</a>
           <a href="#news">News</a>
-          <a href="#admin">Admin</a>
+          <a href="/admin">Admin</a>
         </nav>
         <a class="btn btn-yellow nav-cta" href="#register">Apply Now ↗</a>
         <button class="nav-toggle" id="navToggle" aria-label="Open menu">
@@ -2150,22 +2168,6 @@
               broadcast coverage.
             </div>
           </form>
-        </div>
-      </section>
-
-      <section class="section prizes" id="prizes">
-        <div class="wrap">
-          <div class="section-head">
-            <div>
-              <div class="eyebrow">04 / THE STAKES</div>
-              <h2 class="section-title">Prize pool</h2>
-            </div>
-            <p class="section-lead">
-              Every arena has its own podium. Champions appear here the moment
-              the admin locks them in.
-            </p>
-          </div>
-          <div class="podium" id="prizesGrid"></div>
         </div>
       </section>
 
@@ -2588,7 +2590,7 @@
       const CONFIG = {
         ADMIN_UID: "gNlNvVcDE5SfRCgK5eeFCK8dnaL2",
         ADMIN_EMAIL: "shaurya5.smn@gmail.com",
-        EVENT_DATE_FALLBACK: "2026-10-17T09:00:00+05:30",
+        EVENT_DATE_FALLBACK: "2026-10-12T09:00:00+05:30",
 
         FIREBASE: {
           apiKey: "AIzaSyAVeTz45i2xWylWNrnxg1AeqTvu-ceGTLM",
@@ -2806,15 +2808,11 @@
       }
 
       function formatDate(iso) {
-        const d = new Date(iso);
-        if (Number.isNaN(d.getTime())) return "17 OCT 2026";
-        return d
-          .toLocaleDateString("en-IN", {
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-          })
-          .toUpperCase();
+        return "12.10.2026";
+      }
+
+      function roundPoints(value) {
+        return Math.round(Number(value) || 0);
       }
 
       function initStatic() {
@@ -2850,17 +2848,17 @@
 
         $("#timeline").innerHTML = [
           [
-            "17 OCT",
+            "12.10.2026",
             "QUALIFIER DROP",
             "All squads enter the arena. First call at 09:00.",
           ],
           [
-            "18 OCT",
+            "12.10.2026",
             "SEMIFINAL PRESSURE",
             "Top performers meet in the bracket.",
           ],
           [
-            "19 OCT",
+            "12.10.2026",
             "GRAND FINALS",
             "One stage. Four champions. The clutch moment.",
           ],
@@ -2903,13 +2901,15 @@
             (a, b) => (Number(b.points) || 0) - (Number(a.points) || 0),
           );
           const top = rows[0];
-          return `<div class="ticker-item"><span class="live-dot"></span>${GAMES[k].label.toUpperCase()} / ${esc(top?.team || "OPEN SLOT")} — ${Number(top?.points || 0)} PTS</div>`;
+          return `<div class="ticker-item"><span class="live-dot"></span>${GAMES[k].label.toUpperCase()} / ${esc(top?.team || "OPEN SLOT")} — ${roundPoints(top?.points)} PTS</div>`;
         });
         $("#tickerTrack").innerHTML = items.concat(items).join("");
       }
 
       function renderPrizes() {
-        $("#prizesGrid").innerHTML = GAME_KEYS.map((k, i) => {
+        const prizesGrid = $("#prizesGrid");
+        if (!prizesGrid) return;
+        prizesGrid.innerHTML = GAME_KEYS.map((k, i) => {
           const prize = state.settings.prizes?.[k] || DEMO.settings.prizes[k];
           return `<article class="prize-card"><div class="eyebrow">0${i + 1} / PODIUM</div><div class="prize-game">${GAMES[k].label}</div><div class="prize-amount">₹${prize.first}</div><div class="payout"><span>01 / CHAMPION</span><b>₹${prize.first}</b></div><div class="payout"><span>02 / FINALIST</span><b>₹${prize.second}</b></div><div class="payout"><span>03 / THIRD</span><b>₹${prize.third}</b></div><div class="champion">CHAMPION: <b>${esc(state.champions[k] || "TBD")}</b></div></article>`;
         }).join("");
@@ -2978,7 +2978,7 @@
         }
         $("#scoreboardTable").innerHTML =
           `<table class="score-table"><thead><tr><th>Rank</th><th>Team</th><th>Points</th></tr></thead><tbody>
-      ${rows.map((r, i) => `<tr class="${i < 3 ? "top" : ""}"><td><span class="rank">${String(i + 1).padStart(2, "0")}</span></td><td>${esc(r.team)}</td><td><span class="pts">${Number(r.points || 0)}</span></td></tr>`).join("")}
+      ${rows.map((r, i) => `<tr class="${i < 3 ? "top" : ""}"><td><span class="rank">${String(i + 1).padStart(2, "0")}</span></td><td>${esc(r.team)}</td><td><span class="pts">${roundPoints(r.points)}</span></td></tr>`).join("")}
     </tbody></table>`;
       }
 
@@ -3270,7 +3270,7 @@
           rows
             .map(
               (r) =>
-                `<div class="admin-list-item"><span><b>${esc(r.team)}</b> · ${Number(r.points || 0)} pts</span><span style="display:flex;gap:8px;align-items:center"><button class="tiny-btn" data-edit-score="${esc(r.team)}" data-edit-points="${Number(r.points || 0)}">Edit</button><button class="danger-btn" data-del-score="${esc(r.team)}">Remove</button></span></div>`,
+                `<div class="admin-list-item"><span><b>${esc(r.team)}</b> · ${roundPoints(r.points)} pts</span><span style="display:flex;gap:8px;align-items:center"><button class="tiny-btn" data-edit-score="${esc(r.team)}" data-edit-points="${roundPoints(r.points)}">Edit</button><button class="danger-btn" data-del-score="${esc(r.team)}">Remove</button></span></div>`,
             )
             .join("") ||
           `<div class="muted mono" style="font-size:10px">NO ROWS.</div>`;
@@ -3555,7 +3555,7 @@
       $("#addScore").addEventListener("click", async () => {
         const k = $("#scoreGame").value,
           team = $("#scoreTeam").value.trim(),
-          points = Number($("#scorePoints").value);
+          points = roundPoints($("#scorePoints").value);
         if (!team) return;
         // If an existing row is being edited, remove the old row first. This also
         // permits changing the team name while keeping the same edit workflow.
