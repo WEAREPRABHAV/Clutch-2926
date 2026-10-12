@@ -6,8 +6,11 @@
     <meta name="theme-color" content="#050505" />
     <meta name="description" content="CLUTCH — School Esports Festival 2026" />
     <script>
+      const isAdminView =
+        new URLSearchParams(location.search).has("admin") ||
+        location.pathname.replace(/\/+$/, "") === "/admin";
       document.documentElement.classList.add(
-        location.pathname.replace(/\/+$/, "") === "/admin" ? "admin-route" : "public-route",
+        isAdminView ? "admin-route" : "public-route",
       );
     </script>
     <title>CLUTCH / 26 — School Esports Festival</title>
@@ -1958,7 +1961,7 @@
           <a href="#teams">Teams</a>
           <a href="#organizers">Our Team</a>
           <a href="#news">News</a>
-          <a href="/admin">Admin</a>
+          <a href="./admin.html">Admin</a>
         </nav>
         <a class="btn btn-yellow nav-cta" href="#register">Apply Now ↗</a>
         <button class="nav-toggle" id="navToggle" aria-label="Open menu">

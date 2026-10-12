@@ -81,7 +81,7 @@ For a real deployment, the safer path is:
 ### Option A: GitHub
 
 1. Create a GitHub repository, e.g. `clutch-esports`.
-2. Upload `index.html`, `firestore.rules`, `vercel.json`, and `README.md`.
+2. Upload `index.html`, `admin.html`, `firestore.rules`, `vercel.json`, and `README.md`.
 3. Go to https://vercel.com/
 4. Import the GitHub repository.
 5. Framework preset: **Other** (or leave automatic).
@@ -154,7 +154,7 @@ Use the Admin → Event Settings panel. Empty social URLs are intentionally not 
 
 ## 7. Using the admin console
 
-Go to the `#admin` section of the site.
+Open `/admin.html` on the deployed site (for example, `https://your-site.vercel.app/admin.html`).
 
 1. Enter the password.
 2. Update event date/social links.
