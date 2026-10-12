@@ -1,0 +1,3774 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#050505" />
+    <meta name="description" content="CLUTCH — School Esports Festival 2026" />
+    <title>CLUTCH / 26 — School Esports Festival</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800;1,900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --yellow: #ffe500;
+        --yellow2: #ffc800;
+        --ink: #050505;
+        --panel: #101014;
+        --panel2: #15151a;
+        --white: #f5f5f2;
+        --muted: #8c8d93;
+        --line: #29292f;
+        --green: #5cff9d;
+        --danger: #ff5f5f;
+        --max: 1380px;
+        --nav-h: 78px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        background: var(--ink);
+      }
+      body {
+        margin: 0;
+        background: var(--ink);
+        color: var(--white);
+        font-family: Inter, Arial, sans-serif;
+        overflow-x: hidden;
+      }
+      body:before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 9990;
+        pointer-events: none;
+        opacity: 0.055;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+        mix-blend-mode: screen;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      ::selection {
+        background: var(--yellow);
+        color: #000;
+      }
+      .mono {
+        font-family: "IBM Plex Mono", monospace;
+      }
+      .condensed {
+        font-family: "Barlow Condensed", sans-serif;
+      }
+      .wrap {
+        width: min(var(--max), calc(100% - 48px));
+        margin: auto;
+      }
+      .eyebrow {
+        font:
+          600 12px/1.2 "IBM Plex Mono",
+          monospace;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--yellow);
+      }
+      .section {
+        position: relative;
+        padding: 120px 0;
+        border-top: 1px solid var(--line);
+        overflow: hidden;
+      }
+      .section-title {
+        margin: 8px 0 0;
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: clamp(58px, 7vw, 118px);
+        line-height: 0.84;
+        letter-spacing: -0.045em;
+        font-style: italic;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+      .section-lead {
+        max-width: 480px;
+        color: #9a9aa0;
+        line-height: 1.75;
+        margin: 20px 0 0;
+      }
+      .yellow {
+        color: var(--yellow);
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .btn {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        min-height: 48px;
+        padding: 0 25px;
+        border: 1px solid transparent;
+        clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+        text-transform: uppercase;
+        font:
+          700 12px/1 "IBM Plex Mono",
+          monospace;
+        letter-spacing: 0.08em;
+        transition: 0.2s;
+      }
+      .btn-yellow {
+        background: var(--yellow);
+        color: #050505;
+      }
+      .btn-ghost {
+        border-color: #6d6d73;
+        color: #fff;
+        background: transparent;
+      }
+      .btn:hover {
+        transform: translate(-2px, -2px);
+        filter: brightness(1.07);
+      }
+      .btn:active {
+        transform: translate(0, 0);
+      }
+      .grid-bg {
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+        background-size: 64px 64px;
+      }
+
+      /* NAV */
+      .nav {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--nav-h);
+        display: flex;
+        align-items: center;
+        background: rgba(5, 5, 5, 0.9);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid #222;
+        transition: 0.25s;
+      }
+      .nav.scrolled {
+        background: rgba(5, 5, 5, 0.98);
+      }
+      .nav-inner {
+        width: min(1440px, calc(100% - 42px));
+        margin: auto;
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: max-content;
+      }
+      .brand-mark {
+        font-size: 20px;
+        color: var(--yellow);
+        transform: rotate(-14deg);
+      }
+      .brand-name {
+        font:
+          900 italic 26px/1 "Barlow Condensed",
+          sans-serif;
+        letter-spacing: -0.02em;
+      }
+      .brand-suffix {
+        font: 600 11px "IBM Plex Mono";
+        color: #aaa;
+        margin-left: -6px;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+        flex: 1;
+      }
+      .nav-links a {
+        font: 600 11px "IBM Plex Mono";
+        letter-spacing: 0.08em;
+        color: #9a9a9f;
+        text-transform: uppercase;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: #fff;
+      }
+      .nav-cta {
+        margin-left: auto;
+      }
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: 0;
+        color: #fff;
+        font-size: 24px;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 100svh;
+        position: relative;
+        padding-top: var(--nav-h);
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at 50% 55%,
+            rgba(255, 229, 0, 0.055),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 65% 35%,
+            rgba(255, 255, 255, 0.06),
+            transparent 22%
+          ),
+          #030303;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.9),
+            transparent 35%,
+            transparent 65%,
+            rgba(0, 0, 0, 0.72)
+          ),
+          linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.65),
+            transparent 30%,
+            transparent 75%,
+            rgba(0, 0, 0, 0.35)
+          );
+      }
+      .hero-noise {
+        position: absolute;
+        inset: -20%;
+        opacity: 0.18;
+        filter: blur(1px);
+        background:
+          radial-gradient(
+            ellipse at 42% 55%,
+            rgba(150, 150, 150, 0.18),
+            transparent 28%
+          ),
+          radial-gradient(
+            ellipse at 68% 50%,
+            rgba(255, 229, 0, 0.08),
+            transparent 20%
+          );
+        animation: smoke 14s ease-in-out infinite alternate;
+      }
+      @keyframes smoke {
+        to {
+          transform: translate(3%, -2%) scale(1.08);
+          filter: blur(8px);
+        }
+      }
+      .bullet {
+        position: absolute;
+        width: 280px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--yellow), #fff);
+        box-shadow:
+          0 0 12px var(--yellow),
+          0 0 45px rgba(255, 229, 0, 0.8);
+        top: 32%;
+        left: -300px;
+        transform: rotate(-8deg);
+        animation: shoot 6s linear infinite;
+        z-index: 2;
+      }
+      .bullet:after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: -4px;
+        width: 8px;
+        height: 8px;
+        background: #fff;
+        box-shadow: 0 0 18px 5px var(--yellow);
+        transform: rotate(45deg);
+      }
+      @keyframes shoot {
+        0% {
+          left: -320px;
+          opacity: 0;
+        }
+        8% {
+          opacity: 1;
+        }
+        46% {
+          opacity: 1;
+        }
+        53% {
+          left: 105%;
+          opacity: 0;
+        }
+        100% {
+          left: 105%;
+          opacity: 0;
+        }
+      }
+      .embers {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .ember {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: var(--yellow);
+        box-shadow: 0 0 12px 2px rgba(255, 229, 0, 0.55);
+        opacity: 0.5;
+        animation: float 7s linear infinite;
+      }
+      @keyframes float {
+        from {
+          transform: translate3d(0, 20px, 0);
+          opacity: 0;
+        }
+        20% {
+          opacity: 0.65;
+        }
+        80% {
+          opacity: 0.3;
+        }
+        to {
+          transform: translate3d(var(--dx), -180px, 0);
+          opacity: 0;
+        }
+      }
+      .hero-content {
+        position: relative;
+        z-index: 3;
+        width: min(1300px, calc(100% - 60px));
+        margin: auto;
+        padding: 100px 0 80px;
+        text-align: center;
+      }
+      .hero-kicker {
+        font: 600 12px "IBM Plex Mono";
+        letter-spacing: 0.28em;
+        color: #b6b6b9;
+        text-transform: uppercase;
+      }
+      .hero-kicker b {
+        color: var(--yellow);
+        font-weight: 600;
+      }
+      .wordmark {
+        position: relative;
+        margin: 20px auto 10px;
+        width: min(1000px, 92vw);
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: skewX(-5deg);
+      }
+
+      .clutch-logo {
+        position: relative;
+        z-index: 2;
+        display: block;
+        width: min(900px, 88vw);
+        max-width: 100%;
+        height: auto;
+        filter: drop-shadow(0 0 8px rgba(255, 229, 0, 0.35))
+          drop-shadow(8px 10px 0 rgba(255, 229, 0, 0.18));
+      }
+
+      .wordmark-electric {
+        isolation: isolate;
+      }
+
+      .electric-bolts {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      .bolt {
+        fill: none;
+        stroke: #ffe500;
+        stroke-width: 7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0;
+        filter: drop-shadow(0 0 5px #ffe500)
+          drop-shadow(0 0 14px rgba(255, 229, 0, 0.8));
+        animation: electricBolt 2.8s infinite;
+      }
+
+      .bolt-1 {
+        animation-delay: 0s;
+      }
+      .bolt-2 {
+        animation-delay: 0.4s;
+      }
+      .bolt-3 {
+        animation-delay: 0.8s;
+      }
+      .bolt-4 {
+        animation-delay: 1.2s;
+      }
+      .bolt-5 {
+        animation-delay: 1.6s;
+      }
+      .bolt-6 {
+        animation-delay: 2s;
+      }
+
+      @keyframes electricBolt {
+        0%,
+        72%,
+        100% {
+          opacity: 0;
+        }
+
+        74% {
+          opacity: 1;
+        }
+
+        76% {
+          opacity: 0.15;
+        }
+
+        78% {
+          opacity: 1;
+        }
+
+        82% {
+          opacity: 0;
+        }
+      }
+
+      .wordmark.glitch {
+        animation: glitch 0.7s steps(2) 1;
+      }
+      @keyframes glitch {
+        20% {
+          transform: skewX(-5deg) translateX(-4px);
+        }
+        40% {
+          transform: skewX(-5deg) translateX(5px);
+        }
+        60% {
+          transform: skewX(-5deg);
+        }
+        80% {
+          filter: drop-shadow(18px 12px 0 rgba(255, 229, 0, 0.6));
+        }
+      }
+      .hero-sub {
+        font: 500 14px "IBM Plex Mono";
+        letter-spacing: 0.45em;
+        color: #bdbdc0;
+        text-transform: uppercase;
+      }
+      .hero-actions {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        margin-top: 38px;
+        flex-wrap: wrap;
+      }
+      .corner {
+        position: absolute;
+        z-index: 4;
+        font: 600 10px/1.6 "IBM Plex Mono";
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #707077;
+      }
+      .corner b {
+        color: var(--yellow);
+      }
+      .corner.tl {
+        left: 5.4%;
+        top: 145px;
+        text-align: left;
+      }
+      .corner.tr {
+        right: 5.4%;
+        top: 145px;
+        text-align: right;
+      }
+      .corner.bl {
+        left: 5.4%;
+        bottom: 28px;
+      }
+      .corner.br {
+        right: 5.4%;
+        bottom: 28px;
+        text-align: right;
+        max-width: 230px;
+      }
+      .cursor {
+        display: inline-block;
+        width: 7px;
+        height: 13px;
+        background: var(--yellow);
+        vertical-align: -2px;
+        margin-left: 5px;
+        animation: blink 1s steps(2) infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+      .countdown {
+        position: absolute;
+        z-index: 4;
+        right: 5.4%;
+        bottom: 65px;
+        width: 330px;
+        padding: 18px 18px 15px;
+        border: 1px solid rgba(255, 229, 0, 0.32);
+        background: rgba(12, 12, 14, 0.65);
+        backdrop-filter: blur(10px);
+        clip-path: polygon(0 0, 100% 0, 100% 88%, 94% 100%, 0 100%);
+      }
+      .countdown-title {
+        font: 600 10px "IBM Plex Mono";
+        letter-spacing: 0.2em;
+        color: var(--yellow);
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .countdown-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+      }
+      .time-box {
+        border: 1px solid #33343a;
+        background: rgba(255, 255, 255, 0.025);
+        padding: 12px 4px;
+        text-align: center;
+      }
+      .time-box strong {
+        display: block;
+        font: 800 31px "Barlow Condensed";
+        letter-spacing: 0.02em;
+      }
+      .time-box span {
+        font: 600 8px "IBM Plex Mono";
+        color: var(--yellow);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .countdown-date {
+        margin-top: 10px;
+        color: #7f8087;
+        font: 500 9px "IBM Plex Mono";
+        letter-spacing: 0.08em;
+      }
+
+      /* TICKER */
+      .ticker {
+        background: var(--yellow);
+        color: #090909;
+        border-block: 1px solid #e4cc00;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .ticker-track {
+        display: flex;
+        min-height: 48px;
+        align-items: center;
+        width: max-content;
+        animation: marquee 30s linear infinite;
+      }
+      .ticker:hover .ticker-track {
+        animation-play-state: paused;
+      }
+      .ticker-item {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 0 25px;
+        border-right: 1px solid rgba(0, 0, 0, 0.2);
+        font: 700 10px "IBM Plex Mono";
+        text-transform: uppercase;
+      }
+      .live-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #000;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.13);
+      }
+      @keyframes marquee {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ARENAS */
+      .arenas {
+        background: #08080a;
+      }
+      .section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 40px;
+        margin-bottom: 55px;
+      }
+      .cards4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+      .arena-card,
+      .news-card,
+      .team-card,
+      .prize-card,
+      .admin-card {
+        position: relative;
+        background: linear-gradient(145deg, #17171b, #0e0e11);
+        border: 1px solid #303038;
+        clip-path: polygon(0 0, 96% 0, 100% 5%, 100% 100%, 4% 100%, 0 95%);
+        overflow: hidden;
+      }
+      .arena-card {
+        min-height: 425px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        isolation: isolate;
+      }
+      .arena-card:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--bg);
+        background-size: cover;
+        background-position: center;
+        opacity: 0.2;
+        filter: grayscale(1) contrast(1.2);
+        z-index: -2;
+      }
+      .arena-card:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 15%,
+          rgba(0, 0, 0, 0.15) 38%,
+          #08080a 92%
+        );
+        z-index: -1;
+      }
+      .arena-card:hover {
+        border-color: var(--yellow);
+        transform: translateY(-5px);
+        transition: 0.25s;
+      }
+      .card-num {
+        position: absolute;
+        top: 20px;
+        left: 22px;
+        color: var(--yellow);
+        font: 600 11px "IBM Plex Mono";
+      }
+      .format {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        border: 1px solid #53535a;
+        padding: 4px 7px;
+        color: #aaa;
+        font: 500 8px "IBM Plex Mono";
+      }
+      .arena-title {
+        font: 900 italic 47px/1 "Barlow Condensed";
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      .arena-desc {
+        color: #aaa;
+        line-height: 1.55;
+        font-size: 13px;
+        min-height: 42px;
+        margin: 11px 0 15px;
+      }
+      .rules-toggle {
+        border: 0;
+        background: none;
+        color: var(--yellow);
+        padding: 0;
+        font: 600 9px "IBM Plex Mono";
+        letter-spacing: 0.08em;
+        text-align: left;
+        text-transform: uppercase;
+      }
+      .rules {
+        max-height: 0;
+        overflow: hidden;
+        color: #b8b8bd;
+        font-size: 11px;
+        line-height: 1.65;
+        transition: max-height 0.35s;
+      }
+      .arena-card.open .rules {
+        max-height: 160px;
+        margin-top: 10px;
+      }
+      .arena-card.open .rules-toggle:after {
+        content: "  ↑";
+      }
+      .rules-toggle:after {
+        content: "  ↓";
+      }
+
+      /* GENERIC DARK/WHITE SPLIT */
+      .light-section {
+        background: #efefef;
+        color: #09090b;
+        border-top: 0;
+      }
+      .light-section .eyebrow {
+        color: #9a7d00;
+      }
+      .light-section .section-lead {
+        color: #6c6c73;
+      }
+      .schedule-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+        align-items: center;
+      }
+      .timeline {
+        position: relative;
+        border-left: 1px solid #c7c7c9;
+      }
+      .timeline-item {
+        position: relative;
+        padding: 0 0 55px 56px;
+      }
+      .timeline-item:last-child {
+        padding-bottom: 0;
+      }
+      .timeline-item:before {
+        content: "";
+        position: absolute;
+        left: -22px;
+        top: 0;
+        width: 44px;
+        height: 44px;
+        background: var(--yellow);
+        clip-path: polygon(12% 0, 100% 0, 100% 86%, 86% 100%, 0 100%, 0 12%);
+        display: grid;
+        place-items: center;
+      }
+      .timeline-item:after {
+        content: attr(data-num);
+        position: absolute;
+        left: -10px;
+        top: 13px;
+        color: #000;
+        font: 700 10px "IBM Plex Mono";
+      }
+      .date {
+        font: 600 10px "IBM Plex Mono";
+        letter-spacing: 0.16em;
+        color: #777;
+        text-transform: uppercase;
+      }
+      .timeline h3 {
+        font: 900 italic 31px "Barlow Condensed";
+        margin: 8px 0 6px;
+        text-transform: uppercase;
+      }
+      .timeline p {
+        color: #777;
+        margin: 0;
+        line-height: 1.5;
+        font-size: 13px;
+      }
+
+      /* REGISTRATION */
+      .registration {
+        background: #08080a;
+      }
+      .reg-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 70px;
+        align-items: start;
+      }
+      .reg-title {
+        font: 900 italic clamp(70px, 8vw, 130px)/0.75 "Barlow Condensed";
+        letter-spacing: -0.055em;
+        text-transform: uppercase;
+      }
+      .reg-title span {
+        color: #ad8d00;
+      }
+      .form-shell {
+        background: #141419;
+        border: 1px solid #323239;
+        padding: 38px;
+        clip-path: polygon(0 0, 98% 0, 100% 4%, 100% 96%, 96% 100%, 0 100%);
+      }
+      .form-label {
+        display: block;
+        color: #777;
+        font: 600 9px "IBM Plex Mono";
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        margin: 0 0 8px;
+      }
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .field {
+        margin-bottom: 17px;
+      }
+      .field.full {
+        grid-column: 1/-1;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        background: #09090b;
+        border: 1px solid #33343a;
+        color: #eee;
+        padding: 14px 13px;
+        outline: none;
+        border-radius: 0;
+      }
+      textarea {
+        min-height: 84px;
+        resize: vertical;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--yellow);
+        box-shadow: 0 0 0 1px var(--yellow);
+      }
+      .form-note {
+        font: 500 9px/1.6 "IBM Plex Mono";
+        color: #666;
+        margin-top: 13px;
+      }
+      .form-status {
+        min-height: 18px;
+        font-size: 12px;
+        margin-top: 12px;
+      }
+      .form-status.ok {
+        color: var(--green);
+      }
+      .form-status.err {
+        color: var(--danger);
+      }
+
+      /* PRIZES */
+      .prizes {
+        background: #0a0a0c;
+      }
+      .podium {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        align-items: end;
+      }
+      .prize-card {
+        padding: 30px 24px 24px;
+        min-height: 290px;
+      }
+      .prize-game {
+        font: 900 italic 36px "Barlow Condensed";
+        text-transform: uppercase;
+      }
+      .prize-amount {
+        font: 900 italic 64px/1 "Barlow Condensed";
+        color: var(--yellow);
+        margin: 22px 0 16px;
+      }
+      .payout {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid #292930;
+        padding: 10px 0;
+        font: 600 10px "IBM Plex Mono";
+      }
+      .champion {
+        color: #b8b8bd;
+        font-size: 10px;
+        line-height: 1.5;
+        margin-top: 10px;
+      }
+      .champion b {
+        color: #fff;
+      }
+
+      /* SCOREBOARD */
+      .scoreboard {
+        background: #08080a;
+      }
+      .tabs {
+        display: flex;
+        gap: 3px;
+        overflow: auto;
+        border-bottom: 1px solid #2c2c31;
+        margin-bottom: 20px;
+      }
+      .tab {
+        border: 0;
+        background: #15151a;
+        color: #777;
+        padding: 13px 20px;
+        font: 600 10px "IBM Plex Mono";
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .tab.active {
+        background: var(--yellow);
+        color: #000;
+      }
+      .score-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .score-table th {
+        text-align: left;
+        color: #666;
+        font: 600 9px "IBM Plex Mono";
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 12px;
+        border-bottom: 1px solid #2a2a30;
+      }
+      .score-table td {
+        padding: 15px 12px;
+        border-bottom: 1px solid #1d1d21;
+        color: #d6d6d8;
+        font-size: 13px;
+      }
+      .score-table tr.top td {
+        background: rgba(255, 229, 0, 0.055);
+      }
+      .rank {
+        font: 800 24px "Barlow Condensed";
+        font-style: italic;
+        color: #777;
+      }
+      .top .rank {
+        color: var(--yellow);
+      }
+      .pts {
+        font: 900 italic 27px "Barlow Condensed";
+        color: #fff;
+      }
+      .top .pts {
+        color: var(--yellow);
+      }
+      .empty {
+        text-align: center;
+        color: #777;
+        padding: 50px !important;
+        font-family: "IBM Plex Mono";
+        font-size: 11px !important;
+      }
+
+      /* NEWS / TEAM */
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .news-card {
+        padding: 26px;
+        min-height: 230px;
+      }
+      .news-card .date {
+        color: var(--yellow);
+      }
+      .news-card h3 {
+        font: 900 italic 33px/1 "Barlow Condensed";
+        text-transform: uppercase;
+        margin: 35px 0 10px;
+      }
+      .news-card p {
+        color: #909097;
+        line-height: 1.6;
+        font-size: 12px;
+        margin: 0;
+      }
+      .directory {
+        margin-top: 65px;
+      }
+      .team-groups {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .game-group {
+        border-top: 1px solid #2b2b30;
+        padding-top: 15px;
+      }
+      .game-group h3 {
+        font: 900 italic 32px "Barlow Condensed";
+        margin: 0 0 12px;
+        text-transform: uppercase;
+      }
+      .roster-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 12px 0;
+        border-bottom: 1px solid #1d1d21;
+        font-size: 12px;
+      }
+      .roster-row span:last-child {
+        color: #666;
+        font-family: "IBM Plex Mono";
+        font-size: 9px;
+      }
+
+      /* OUR TEAM */
+      .organizers {
+        background: #0a0a0c;
+      }
+      .organizer-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+      }
+      .team-card {
+        padding: 0;
+        min-height: 320px;
+      }
+      .portrait {
+        height: 180px;
+        background:
+          radial-gradient(
+            circle at 50% 30%,
+            rgba(255, 229, 0, 0.15),
+            transparent 30%
+          ),
+          repeating-linear-gradient(
+            135deg,
+            #18181d 0,
+            #18181d 10px,
+            #101014 10px,
+            #101014 20px
+          );
+        display: grid;
+        place-items: center;
+        border-bottom: 1px solid #2c2c31;
+        position: relative;
+        overflow: hidden;
+      }
+      .portrait:after {
+        content: "PHOTO / PLACEHOLDER";
+        font: 600 9px "IBM Plex Mono";
+        letter-spacing: 0.15em;
+        color: #4e4e55;
+      }
+      .portrait img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(1) contrast(1.2);
+        display: none;
+      }
+      .team-info {
+        padding: 20px;
+      }
+      .team-role {
+        color: var(--yellow);
+        font: 600 9px "IBM Plex Mono";
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .team-name {
+        font: 900 italic 30px "Barlow Condensed";
+        text-transform: uppercase;
+        margin: 7px 0;
+      }
+      .team-socials {
+        display: flex;
+        gap: 8px;
+      }
+      .team-socials a {
+        color: #777;
+        font: 600 9px "IBM Plex Mono";
+      }
+      .team-socials a:hover {
+        color: #fff;
+      }
+
+      /* ADMIN */
+      .admin {
+        background: #050506;
+      }
+      .admin-gate {
+        max-width: 480px;
+        margin: auto;
+      }
+      .admin-panel {
+        display: none;
+      }
+      .admin-panel.show {
+        display: block;
+      }
+      .admin-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0;
+      }
+      .admin-card {
+        padding: 22px;
+        margin-bottom: 12px;
+      }
+      .admin-card h3 {
+        font: 900 italic 30px "Barlow Condensed";
+        margin: 0 0 15px;
+        text-transform: uppercase;
+      }
+      .admin-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .admin-row.three {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .admin-list {
+        margin-top: 10px;
+      }
+      .admin-list-item {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+        border-top: 1px solid #2a2a30;
+        padding: 11px 0;
+        font-size: 12px;
+      }
+      .danger-btn {
+        background: #2a1010;
+        color: #ff8b8b;
+        border: 1px solid #592222;
+        padding: 8px 10px;
+        font: 600 9px "IBM Plex Mono";
+      }
+      .tiny-btn {
+        background: #202026;
+        color: #ddd;
+        border: 1px solid #3a3a42;
+        padding: 8px 10px;
+        font: 600 9px "IBM Plex Mono";
+      }
+
+      /* FOOTER */
+      footer {
+        background: #030303;
+        border-top: 1px solid #24242a;
+        padding: 70px 0 28px;
+      }
+      .footer-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        align-items: flex-end;
+      }
+      .footer-brand {
+        font: 900 italic clamp(70px, 10vw, 150px)/0.72 "Barlow Condensed";
+        color: var(--yellow);
+        letter-spacing: -0.06em;
+      }
+      .socials {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+      .social {
+        border: 1px solid #3a3a40;
+        padding: 12px 14px;
+        color: #a0a0a6;
+        font: 600 9px "IBM Plex Mono";
+        text-transform: uppercase;
+      }
+      .social:hover {
+        border-color: var(--yellow);
+        color: #fff;
+      }
+      .footer-bottom {
+        border-top: 1px solid #1e1e22;
+        margin-top: 50px;
+        padding-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        color: #555;
+        font: 500 9px "IBM Plex Mono";
+        letter-spacing: 0.08em;
+      }
+
+      /* CLICK FX */
+      .click-fx {
+        position: fixed;
+        z-index: 10000;
+        pointer-events: none;
+        width: 80px;
+        height: 80px;
+        transform: translate(-50%, -50%);
+        animation: click-pop 0.45s cubic-bezier(0.15, 0.75, 0.25, 1) forwards;
+      }
+      .click-fx .flash {
+        position: absolute;
+        inset: 10px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 229, 0, 0.7),
+          rgba(255, 229, 0, 0.18) 35%,
+          transparent 70%
+        );
+        animation: flash 0.45s ease-out forwards;
+      }
+      .click-fx .bolt {
+        position: absolute;
+        left: 31px;
+        top: 12px;
+        width: 20px;
+        height: 55px;
+        background: var(--yellow);
+        clip-path: polygon(
+          55% 0,
+          100% 0,
+          67% 40%,
+          92% 40%,
+          26% 100%,
+          39% 55%,
+          10% 55%
+        );
+        filter: drop-shadow(0 0 8px var(--yellow));
+        transform: rotate(-10deg);
+        animation: bolt 0.45s ease-out forwards;
+      }
+      .click-fx .ring {
+        position: absolute;
+        inset: 15px;
+        border: 1px solid var(--yellow);
+        border-radius: 50%;
+        animation: ring 0.45s ease-out forwards;
+      }
+      @keyframes click-pop {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.35) rotate(-15deg);
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(1.25) rotate(15deg);
+        }
+      }
+      @keyframes flash {
+        0% {
+          transform: scale(0.2);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.7);
+          opacity: 0;
+        }
+      }
+      @keyframes bolt {
+        0% {
+          transform: rotate(-35deg) scale(0.4);
+        }
+        45% {
+          transform: rotate(5deg) scale(1.2);
+        }
+        100% {
+          transform: rotate(18deg) scale(0.75);
+          opacity: 0;
+        }
+      }
+      @keyframes ring {
+        0% {
+          transform: scale(0.2);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(2.1);
+          opacity: 0;
+        }
+      }
+
+      /* TOAST */
+      .toast {
+        position: fixed;
+        z-index: 9999;
+        bottom: 18px;
+        left: 50%;
+        transform: translate(-50%, 120%);
+        background: #191b22;
+        border: 1px solid #2d3542;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: 0.35s;
+        white-space: nowrap;
+      }
+      .toast.show {
+        transform: translate(-50%, 0);
+      }
+      .spinner {
+        width: 12px;
+        height: 12px;
+        border: 3px solid #303844;
+        border-top-color: var(--yellow);
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* MODAL */
+      .modal {
+        position: fixed;
+        z-index: 9000;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(8px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .modal.show {
+        display: flex;
+      }
+      .modal-box {
+        width: min(700px, 100%);
+        max-height: 90vh;
+        overflow: auto;
+        background: #121216;
+        border: 1px solid #38383f;
+        padding: 28px;
+        clip-path: polygon(0 0, 97% 0, 100% 4%, 100% 100%, 3% 100%, 0 96%);
+      }
+      .modal-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .modal-head h3 {
+        font: 900 italic 44px "Barlow Condensed";
+        margin: 0;
+        text-transform: uppercase;
+      }
+      .close {
+        border: 1px solid #444;
+        background: #09090b;
+        color: #fff;
+        width: 36px;
+        height: 36px;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 1050px) {
+        .nav-links {
+          gap: 14px;
+        }
+        .cards4,
+        .podium {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .organizer-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .countdown {
+          position: relative;
+          right: auto;
+          bottom: auto;
+          margin: 55px auto 0;
+        }
+        .corner.br {
+          display: none;
+        }
+        .hero-content {
+          padding-bottom: 0;
+        }
+      }
+      @media (max-width: 760px) {
+        :root {
+          --nav-h: 68px;
+        }
+        .wrap {
+          width: min(var(--max), calc(100% - 28px));
+        }
+        .nav-inner {
+          width: calc(100% - 24px);
+        }
+        .nav-links {
+          position: absolute;
+          left: 12px;
+          right: 12px;
+          top: 74px;
+          background: #0c0c0f;
+          border: 1px solid #2d2d33;
+          padding: 16px;
+          display: none;
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .nav-links a {
+          padding: 11px;
+        }
+        .nav-toggle {
+          display: block;
+          margin-left: auto;
+        }
+        .nav-cta {
+          display: none;
+        }
+        .hero-content {
+          width: calc(100% - 24px);
+          padding-top: 95px;
+        }
+        .hero-kicker {
+          letter-spacing: 0.14em;
+        }
+        .hero-sub {
+          font-size: 10px;
+          letter-spacing: 0.2em;
+        }
+        .wordmark {
+          font-size: clamp(75px, 23vw, 150px);
+          margin-top: 30px;
+        }
+        .corner.tl,
+        .corner.tr {
+          display: none;
+        }
+        .corner.bl {
+          left: 14px;
+          bottom: 15px;
+        }
+        .countdown {
+          width: min(350px, calc(100% - 30px));
+        }
+        .section {
+          padding: 80px 0;
+        }
+        .section-head {
+          display: block;
+          margin-bottom: 35px;
+        }
+        .section-title {
+          font-size: 68px;
+        }
+        .section-lead {
+          margin-top: 15px;
+        }
+        .cards4,
+        .podium,
+        .news-grid,
+        .team-groups,
+        .reg-grid,
+        .schedule-grid {
+          grid-template-columns: 1fr;
+        }
+        .arena-card {
+          min-height: 360px;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .field.full {
+          grid-column: auto;
+        }
+        .form-shell {
+          padding: 22px;
+        }
+        .organizer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-top {
+          display: block;
+        }
+        .socials {
+          justify-content: flex-start;
+          margin-top: 30px;
+        }
+        .footer-bottom {
+          display: block;
+          line-height: 2;
+        }
+        .admin-row,
+        .admin-row.three {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *:before,
+        *:after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+      .hero-video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.38;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .arena-card:before {
+        background-image: var(--game-image);
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.35s ease;
+        opacity: 0.42;
+      }
+      .arena-card:hover:before {
+        transform: scale(1.06);
+      }
+      .arena-card:after {
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.18),
+          rgba(0, 0, 0, 0.35) 42%,
+          #08080a 94%
+        );
+      }
+      .admin-card textarea {
+        width: 100%;
+        min-height: 100px;
+        resize: vertical;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-video {
+          display: none;
+        }
+      }
+
+      /* =========================================================
+   CLUTCH ELECTRIC WORDMARK
+   ========================================================= */
+
+      .wordmark-electric {
+        position: relative;
+        display: inline-block;
+        isolation: isolate;
+        line-height: 0.82;
+        color: #ffd900;
+        filter: drop-shadow(0 0 8px rgba(255, 217, 0, 0.85))
+          drop-shadow(0 0 25px rgba(255, 217, 0, 0.45));
+      }
+
+      .wordmark-electric-text {
+        position: relative;
+        z-index: 2;
+        display: block;
+
+        color: #ffd900;
+
+        text-shadow:
+          0 0 2px #fff7a0,
+          0 0 8px #ffd900,
+          0 0 18px rgba(255, 217, 0, 0.9),
+          0 0 40px rgba(255, 180, 0, 0.55);
+
+        animation: clutchLogoPulse 2.2s infinite ease-in-out;
+      }
+
+      /* SVG sits around the wordmark */
+      .electric-bolts {
+        position: absolute;
+        z-index: 3;
+        pointer-events: none;
+
+        left: -11%;
+        top: -22%;
+
+        width: 122%;
+        height: 145%;
+
+        overflow: visible;
+
+        filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 8px #ffd900)
+          drop-shadow(0 0 18px #ffd900);
+      }
+
+      /* Individual lightning bolts */
+      .bolt {
+        fill: none;
+        stroke: #ffe94a;
+        stroke-width: 7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+
+        stroke-dasharray: 90 35;
+        animation:
+          lightningMove 1.1s linear infinite,
+          lightningFlicker 1.7s steps(2, end) infinite;
+      }
+
+      /* Make every bolt behave slightly differently */
+      .bolt-1 {
+        animation-delay: 0s;
+      }
+
+      .bolt-2 {
+        animation-delay: -0.4s;
+      }
+
+      .bolt-3 {
+        animation-delay: -0.8s;
+      }
+
+      .bolt-4 {
+        animation-delay: -0.2s;
+      }
+
+      .bolt-5 {
+        animation-delay: -1s;
+      }
+
+      .bolt-6 {
+        animation-delay: -0.6s;
+      }
+
+      /* Moving electricity */
+      @keyframes lightningMove {
+        from {
+          stroke-dashoffset: 0;
+        }
+
+        to {
+          stroke-dashoffset: -250;
+        }
+      }
+
+      /* Random-looking electrical flicker */
+      @keyframes lightningFlicker {
+        0%,
+        12%,
+        18%,
+        40%,
+        100% {
+          opacity: 1;
+        }
+
+        13%,
+        16%,
+        42%,
+        45% {
+          opacity: 0.25;
+        }
+
+        44% {
+          opacity: 0.05;
+        }
+      }
+
+      /* Logo breathing glow */
+      @keyframes clutchLogoPulse {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 5px rgba(255, 217, 0, 0.8))
+            drop-shadow(0 0 15px rgba(255, 217, 0, 0.45));
+        }
+
+        50% {
+          filter: drop-shadow(0 0 10px rgba(255, 240, 100, 1))
+            drop-shadow(0 0 35px rgba(255, 217, 0, 0.8))
+            drop-shadow(0 0 60px rgba(255, 170, 0, 0.35));
+        }
+      }
+
+      /* Extra electric flash */
+      .wordmark-electric::after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+
+        inset: -18% -10%;
+
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 220, 0, 0.22) 0%,
+          rgba(255, 200, 0, 0.08) 35%,
+          transparent 70%
+        );
+
+        filter: blur(18px);
+
+        opacity: 0.5;
+
+        animation: electricAura 1.8s infinite ease-in-out;
+        pointer-events: none;
+      }
+
+      @keyframes electricAura {
+        0%,
+        100% {
+          opacity: 0.25;
+          transform: scale(0.96);
+        }
+
+        50% {
+          opacity: 0.75;
+          transform: scale(1.05);
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 700px) {
+        .electric-bolts {
+          left: -15%;
+          top: -20%;
+          width: 130%;
+          height: 140%;
+        }
+
+        .bolt {
+          stroke-width: 5;
+        }
+      }
+
+      /* Respect reduced-motion settings */
+      @media (prefers-reduced-motion: reduce) {
+        .bolt,
+        .wordmark-electric-text,
+        .wordmark-electric::after {
+          animation: none;
+        }
+      }
+      /* =========================================
+   CENTERED HERO LOGO
+   ========================================= */
+
+      .hero-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+      }
+
+      .hero-kicker {
+        width: 100%;
+        text-align: center;
+      }
+
+      .wordmark {
+        width: min(1100px, 92vw) !important;
+        max-width: 100% !important;
+        margin: 35px auto 20px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+
+      .clutch-logo {
+        width: min(760px, 75vw) !important;
+        max-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        margin: 0 auto !important;
+      }
+
+      .hero-sub {
+        width: 100%;
+        text-align: center !important;
+        margin-top: 10px;
+      }
+
+      /* Hide hero actions completely */
+      .hero-actions {
+        display: none !important;
+      }
+      /* CLICK LIGHTNING EFFECT */
+      .click-lightning {
+        position: fixed;
+        z-index: 9999;
+        width: 90px;
+        height: 90px;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        animation: clickLightning 0.45s ease-out forwards;
+      }
+
+      .click-lightning svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
+
+      .click-lightning path {
+        fill: none;
+        stroke: var(--yellow);
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: drop-shadow(0 0 4px #ffe500)
+          drop-shadow(0 0 12px rgba(255, 229, 0, 0.9));
+      }
+
+      .click-lightning .flash {
+        fill: #fff;
+        stroke: none;
+        filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 18px #ffe500);
+      }
+
+      @keyframes clickLightning {
+        0% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(0.55);
+        }
+
+        15% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1);
+        }
+
+        45% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.08);
+        }
+
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(1.25);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .click-lightning {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav" id="nav">
+      <div class="nav-inner">
+        <a class="brand" href="#home" aria-label="CLUTCH home">
+          <span class="brand-mark">⚡</span
+          ><span class="brand-name">CLUTCH</span
+          ><span class="brand-suffix">/26</span>
+        </a>
+        <nav class="nav-links" id="navLinks">
+          <a href="#arenas">Arena</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#scoreboard">Scoreboard</a>
+          <a href="#teams">Teams</a>
+          <a href="#organizers">Our Team</a>
+          <a href="#news">News</a>
+          <a href="#admin">Admin</a>
+        </nav>
+        <a class="btn btn-yellow nav-cta" href="#register">Apply Now ↗</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero grid-bg">
+        <!-- Place the final video at assets/trailer.mp4. The hero gradient remains visible if it is absent. -->
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source src="assets/trailer.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-noise"></div>
+        <div class="bullet"></div>
+        <div class="embers" id="embers"></div>
+
+        <div class="corner tl">
+          PLAY_ / COMPETE_ /<br /><b>CONNECT_ / CLUTCH</b>
+        </div>
+        <div class="corner tr">IT'S MORE THAN A GAME.</div>
+
+        <div class="hero-content">
+          <div class="hero-kicker">
+            SCHOOL ESPORTS FESTIVAL <b>•</b> <span id="heroYear">2026</span>
+          </div>
+          <div class="wordmark wordmark-electric" id="wordmark">
+            <svg
+              class="electric-bolts"
+              viewBox="0 0 1000 300"
+              aria-hidden="true"
+            >
+              <path
+                class="bolt bolt-1"
+                d="M80 165 L125 125 L105 160 L155 135 L125 180 L180 150"
+              />
+              <path
+                class="bolt bolt-2"
+                d="M820 150 L875 115 L850 155 L915 125 L875 175 L930 145"
+              />
+              <path
+                class="bolt bolt-3"
+                d="M220 85 L250 55 L240 90 L275 70 L250 110"
+              />
+              <path
+                class="bolt bolt-4"
+                d="M700 215 L730 185 L720 220 L755 200 L730 240"
+              />
+              <path
+                class="bolt bolt-5"
+                d="M370 45 L395 20 L388 52 L420 32 L400 70"
+              />
+              <path
+                class="bolt bolt-6"
+                d="M585 255 L615 225 L605 260 L640 238 L615 275"
+              />
+            </svg>
+
+            <img
+              src="assets/clutch-logo.png"
+              alt="CLUTCH"
+              class="clutch-logo"
+            />
+          </div>
+          <div class="hero-sub">STRATEGY MEETS PASSION</div>
+        </div>
+
+        <div class="corner bl">
+          // SYSTEMS ONLINE <span class="cursor"></span>
+        </div>
+        <div class="corner br">
+          GOOD PLAYERS MAKE MOVES.<br />GREAT PLAYERS CLUTCH.
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Live Now">
+        <div class="ticker-track" id="tickerTrack"></div>
+      </section>
+
+      <section class="section arenas" id="arenas">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">01 / THE BATTLEFIELDS</div>
+              <h2 class="section-title">Choose your arena</h2>
+            </div>
+            <p class="section-lead">
+              Four games. Four ways to make the moment yours. Pick the
+              battlefield that speaks your language.
+            </p>
+          </div>
+          <div class="cards4" id="arenaCards"></div>
+        </div>
+      </section>
+
+      <section class="section light-section" id="schedule">
+        <div class="wrap schedule-grid">
+          <div>
+            <div class="eyebrow">02 / THE RUN OF SHOW</div>
+            <h2 class="section-title">
+              Make your<br /><span class="yellow">move.</span>
+            </h2>
+            <p class="section-lead">
+              Three days of pressure, precision, and the kind of final rounds
+              that become school history.
+            </p>
+            <a class="btn btn-yellow" href="#register" style="margin-top: 28px"
+              >Secure your slot ↗</a
+            >
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </div>
+      </section>
+
+      <section class="section registration" id="register">
+        <div class="wrap reg-grid">
+          <div>
+            <div class="eyebrow">03 / ENTER THE GRID</div>
+            <div class="reg-title">
+              Register<br /><span>your<br />squad.</span>
+            </div>
+            <p class="section-lead">
+              Get your team on the broadcast list. Submit once; we will confirm
+              your slot on the live grid.
+            </p>
+            <div style="margin-top: 45px">
+              <span
+                class="yellow condensed"
+                style="font-size: 58px; font-weight: 900; font-style: italic"
+                id="regCount"
+                >00</span
+              ><span
+                class="mono muted"
+                style="font-size: 10px; margin-left: 12px"
+                >REGISTERED<br />SQUADS</span
+              >
+            </div>
+          </div>
+
+          <form class="form-shell" id="registrationForm">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                gap: 15px;
+                border-bottom: 1px solid #2c2c31;
+                padding-bottom: 18px;
+                margin-bottom: 24px;
+              "
+            >
+              <div class="eyebrow">REGISTRATION PROTOCOL</div>
+              <span class="mono muted" style="font-size: 8px"
+                >ALL FIELDS REQUIRED</span
+              >
+            </div>
+            <div class="form-grid">
+              <div class="field full">
+                <label class="form-label">Team / Player Name</label
+                ><input
+                  name="teamName"
+                  required
+                  placeholder="e.g. Team Phantom"
+                />
+              </div>
+              <div class="field">
+                <label class="form-label">Game</label
+                ><select name="game" id="gameSelect" required></select>
+              </div>
+              <div class="field">
+                <label class="form-label">Class / Section</label
+                ><input name="classSection" required placeholder="XI — A" />
+              </div>
+              <div class="field">
+                <label class="form-label">Captain Name</label
+                ><input name="captain" required placeholder="Full name" />
+              </div>
+              <div class="field">
+                <label class="form-label">Contact Signal</label
+                ><input name="contact" required placeholder="Phone / email" />
+              </div>
+              <div class="field full">
+                <label class="form-label"
+                  >Squad Members
+                  <span class="muted">(comma separated)</span></label
+                ><textarea
+                  name="members"
+                  required
+                  placeholder="Member one, member two, member three"
+                ></textarea>
+              </div>
+            </div>
+            <button class="btn btn-yellow" type="submit">
+              Transmit Registration ↗
+            </button>
+            <div class="form-status" id="regStatus"></div>
+            <div class="form-note">
+              By transmitting, your squad agrees to the event rules and
+              broadcast coverage.
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="section prizes" id="prizes">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">04 / THE STAKES</div>
+              <h2 class="section-title">Prize pool</h2>
+            </div>
+            <p class="section-lead">
+              Every arena has its own podium. Champions appear here the moment
+              the admin locks them in.
+            </p>
+          </div>
+          <div class="podium" id="prizesGrid"></div>
+        </div>
+      </section>
+
+      <section class="section scoreboard" id="scoreboard">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">05 / LIVE FEED</div>
+              <h2 class="section-title">Scoreboard</h2>
+            </div>
+            <p class="section-lead">
+              Points are synced from Firestore in real time. Refreshes are
+              optional. The grid already knows.
+            </p>
+          </div>
+          <div class="tabs" id="scoreTabs"></div>
+          <div id="scoreboardTable"></div>
+        </div>
+      </section>
+
+      <section class="section arenas" id="news">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">06 / SIGNALS</div>
+              <h2 class="section-title">News from the grid</h2>
+            </div>
+            <p class="section-lead">
+              What is moving through the CLUTCH network.
+            </p>
+          </div>
+          <div class="news-grid" id="newsGrid"></div>
+        </div>
+      </section>
+
+      <section class="section arenas" id="teams">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">07 / THE ROSTER</div>
+              <h2 class="section-title">Registered teams</h2>
+            </div>
+            <p class="section-lead">
+              Filter the live roster by arena and lock onto the squads in your
+              sport.
+            </p>
+          </div>
+          <div
+            style="
+              border: 1px solid #303038;
+              background: #15151a;
+              padding: 14px 16px;
+              display: flex;
+              align-items: center;
+              gap: 18px;
+              margin-bottom: 30px;
+            "
+          >
+            <span class="eyebrow">FILTER ROSTER</span>
+            <select id="rosterFilter" style="max-width: 190px"></select>
+            <span
+              class="mono muted"
+              style="font-size: 9px; margin-left: auto"
+              id="rosterCount"
+              >00 SQUADS SIGNALLED</span
+            >
+          </div>
+          <div class="team-groups" id="teamGroups"></div>
+        </div>
+      </section>
+
+      <section class="section organizers" id="organizers">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">08 / BEHIND THE SIGNAL</div>
+              <h2 class="section-title">Our team</h2>
+            </div>
+            <p class="section-lead">
+              The people building the stage, the bracket, and the energy behind
+              every match.
+            </p>
+          </div>
+          <div class="organizer-grid" id="organizerGrid"></div>
+        </div>
+      </section>
+
+      <section class="section admin" id="admin">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">09 / CONTROL TOWER</div>
+              <h2 class="section-title">Admin</h2>
+            </div>
+            <p class="section-lead">
+              Low-stakes client-side gate for event operators. Firestore remains
+              the source of truth for public data.
+            </p>
+          </div>
+
+          <div class="admin-gate" id="adminGate">
+            <div class="admin-card">
+              <h3>Access terminal</h3>
+
+              <label class="form-label">Admin password</label>
+              <input
+                id="adminPassword"
+                type="password"
+                placeholder="Enter control password"
+              />
+              <button
+                class="btn btn-yellow"
+                id="adminLogin"
+                style="margin-top: 14px"
+              >
+                Unlock console ↗
+              </button>
+              <div class="form-status" id="adminStatus"></div>
+            </div>
+          </div>
+
+          <div class="admin-panel" id="adminPanel">
+            <div class="admin-actions">
+              <button class="tiny-btn" id="seedDemo">Seed demo data</button>
+              <button class="tiny-btn" id="adminLogout">Lock console</button>
+              <button class="tiny-btn" id="refreshAdmin">Refresh data</button>
+            </div>
+
+            <div class="admin-card">
+              <h3>Event settings</h3>
+              <div class="admin-row">
+                <div>
+                  <label class="form-label">Event date / ISO</label
+                  ><input id="setEventDate" type="datetime-local" />
+                </div>
+                <div>
+                  <label class="form-label">Instagram URL</label
+                  ><input
+                    id="setInstagram"
+                    placeholder="https://instagram.com/..."
+                  />
+                </div>
+              </div>
+              <div class="admin-row" style="margin-top: 10px">
+                <div>
+                  <label class="form-label">Discord / WhatsApp URL</label
+                  ><input
+                    id="setDiscord"
+                    placeholder="https://discord.gg/..."
+                  />
+                </div>
+                <div>
+                  <label class="form-label">YouTube URL</label
+                  ><input
+                    id="setYoutube"
+                    placeholder="https://youtube.com/..."
+                  />
+                </div>
+              </div>
+              <button
+                class="btn btn-yellow"
+                id="saveSettings"
+                style="margin-top: 14px"
+              >
+                Save settings
+              </button>
+            </div>
+
+            <div class="admin-card">
+              <h3>Scoreboard editor</h3>
+              <div class="admin-row three">
+                <div>
+                  <label class="form-label">Game</label
+                  ><select id="scoreGame"></select>
+                </div>
+                <div>
+                  <label class="form-label">Team</label
+                  ><input id="scoreTeam" placeholder="Team name" />
+                </div>
+                <div>
+                  <label class="form-label">Points</label
+                  ><input
+                    id="scorePoints"
+                    type="number"
+                    min="0"
+                    placeholder="100"
+                  />
+                </div>
+              </div>
+              <div
+                class="toolbar"
+                style="margin-top: 14px; gap: 10px; align-items: center"
+              >
+                <button class="btn btn-yellow" id="addScore">
+                  Add / update row
+                </button>
+                <button
+                  class="tiny-btn"
+                  id="cancelScoreEdit"
+                  type="button"
+                  style="display: none"
+                >
+                  Cancel edit
+                </button>
+              </div>
+              <div class="admin-list" id="adminScores"></div>
+            </div>
+
+            <div class="admin-card">
+              <h3>Prize pool</h3>
+              <div class="admin-row three">
+                <div>
+                  <label class="form-label">Game</label
+                  ><select id="prizeGame"></select>
+                </div>
+                <div>
+                  <label class="form-label">1st prize</label
+                  ><input id="prizeFirst" />
+                </div>
+                <div>
+                  <label class="form-label">2nd prize</label
+                  ><input id="prizeSecond" />
+                </div>
+              </div>
+              <div class="admin-row">
+                <div>
+                  <label class="form-label">3rd prize</label
+                  ><input id="prizeThird" />
+                </div>
+              </div>
+              <button class="btn btn-yellow" id="savePrizes">
+                Save prizes
+              </button>
+            </div>
+            <div class="admin-card">
+              <h3>News board</h3>
+              <div class="admin-row three">
+                <div>
+                  <label class="form-label">Title</label
+                  ><input id="newsTitle" />
+                </div>
+                <div>
+                  <label class="form-label">Date</label
+                  ><input id="newsDate" type="date" />
+                </div>
+                <div>
+                  <label class="form-label">Tag</label><input id="newsTag" />
+                </div>
+              </div>
+              <label class="form-label">Description</label
+              ><textarea id="newsBody"></textarea
+              ><button class="btn btn-yellow" id="saveNews">Publish news</button
+              ><button
+                class="tiny-btn"
+                id="cancelNewsEdit"
+                type="button"
+                style="display: none"
+              >
+                Cancel edit
+              </button>
+              <div class="admin-list" id="adminNews"></div>
+            </div>
+            <div class="admin-card">
+              <h3>Champions</h3>
+              <div class="admin-row three">
+                <div>
+                  <label class="form-label">BGMI</label
+                  ><input id="champBgmi" placeholder="TBD" />
+                </div>
+                <div>
+                  <label class="form-label">Valorant</label
+                  ><input id="champValorant" placeholder="TBD" />
+                </div>
+                <div>
+                  <label class="form-label">Minecraft</label
+                  ><input id="champMinecraft" placeholder="TBD" />
+                </div>
+              </div>
+              <div class="admin-row" style="margin-top: 10px">
+                <div>
+                  <label class="form-label">Chess</label
+                  ><input id="champChess" placeholder="TBD" />
+                </div>
+                <div></div>
+              </div>
+              <button
+                class="btn btn-yellow"
+                id="saveChampions"
+                style="margin-top: 14px"
+              >
+                Lock champions
+              </button>
+            </div>
+
+            <div class="admin-card">
+              <h3>Our team editor</h3>
+              <div class="admin-row three">
+                <div>
+                  <label class="form-label">Name</label
+                  ><input id="memberName" placeholder="Aarav Sharma" />
+                </div>
+                <div>
+                  <label class="form-label">Role</label
+                  ><input id="memberRole" placeholder="Event Head" />
+                </div>
+                <div>
+                  <label class="form-label">Photo URL (optional)</label
+                  ><input id="memberPhoto" placeholder="https://..." />
+                </div>
+              </div>
+              <div class="admin-row" style="margin-top: 10px">
+                <div>
+                  <label class="form-label">Instagram (optional)</label
+                  ><input
+                    id="memberInsta"
+                    placeholder="https://instagram.com/..."
+                  />
+                </div>
+                <div>
+                  <label class="form-label">LinkedIn (optional)</label
+                  ><input
+                    id="memberLinkedin"
+                    placeholder="https://linkedin.com/in/..."
+                  />
+                </div>
+              </div>
+              <button
+                class="btn btn-yellow"
+                id="addMember"
+                style="margin-top: 14px"
+              >
+                Add organizer
+              </button>
+              <div class="admin-list" id="adminMembers"></div>
+            </div>
+
+            <div class="admin-card">
+              <h3>Registrations</h3>
+              <div class="admin-list" id="adminRegistrations"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footer-top">
+          <div>
+            <div class="footer-brand">
+              CLUTCH<span style="font-size: 0.25em; color: #fff">/26</span>
+            </div>
+            <div class="eyebrow" style="margin-top: 20px">
+              SCHOOL ESPORTS FESTIVAL
+            </div>
+          </div>
+          <div class="socials" id="footerSocials"></div>
+        </div>
+        <div class="footer-bottom">
+          <span>STRATEGY MEETS PASSION. PLAY CLEAN. PLAY LOUD.</span>
+          <span
+            >© <span id="footerYear">2026</span> CLUTCH / ALL SYSTEMS
+            ONLINE</span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast">
+      <span class="spinner"></span
+      ><span id="toastText">Spinning up servers</span>
+    </div>
+
+    <div class="modal" id="trailerModal">
+      <div class="modal-box">
+        <div class="modal-head">
+          <h3>Watch trailer</h3>
+          <button class="close" id="closeTrailer">×</button>
+        </div>
+        <div
+          style="
+            aspect-ratio: 16/9;
+            background: #050505;
+            border: 1px solid #2f2f35;
+            margin-top: 20px;
+            display: grid;
+            place-items: center;
+            position: relative;
+            overflow: hidden;
+          "
+        >
+          <div
+            style="
+              font: 900 italic 90px &quot;Barlow Condensed&quot;;
+              color: #fff;
+              opacity: 0.13;
+            "
+          >
+            CLUTCH
+          </div>
+          <div style="position: absolute; text-align: center">
+            <div class="eyebrow">TRAILER PLACEHOLDER</div>
+            <p class="muted" style="max-width: 360px; line-height: 1.6">
+              Drop your YouTube/Vimeo embed into the modal in
+              <b>index.html</b> when the tournament trailer is ready.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      /* =========================================================
+     CLUTCH CONFIG
+     1) Create a Firebase Web App.
+     2) Enable Firestore.
+     3) Paste the Firebase config below.
+     4) Enable Email/Password Authentication for the administrator account.
+     ========================================================= */
+      const CONFIG = {
+        ADMIN_UID: "gNlNvVcDE5SfRCgK5eeFCK8dnaL2",
+        ADMIN_EMAIL: "shaurya5.smn@gmail.com",
+        EVENT_DATE_FALLBACK: "2026-10-17T09:00:00+05:30",
+
+        FIREBASE: {
+          apiKey: "AIzaSyAVeTz45i2xWylWNrnxg1AeqTvu-ceGTLM",
+          authDomain: "clutch-esports-2026.firebaseapp.com",
+          projectId: "clutch-esports-2026",
+          storageBucket: "clutch-esports-2026.firebasestorage.app",
+          messagingSenderId: "555289920212",
+          appId: "1:555289920212:web:2b2d0195552a3ad9993141",
+        },
+
+        // Optional Google Sheet fallback. If Firebase is not configured and this URL
+        // is filled, the app can use the Apps Script endpoint described in README.md.
+        SHEET_API_URL: "",
+      };
+
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        doc,
+        addDoc,
+        setDoc,
+        updateDoc,
+        deleteDoc,
+        writeBatch,
+        onSnapshot,
+        query,
+        orderBy,
+        serverTimestamp,
+      } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+        signOut,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+      const GAMES = {
+        bgmi: {
+          label: "BGMI",
+          format: "SQUAD / 4V4",
+          desc: "Drop hot. Rotate smart. Own the final circle.",
+          rules:
+            "Squads of four. Points combine placement and eliminations. No emulators or prohibited software.",
+        },
+        valorant: {
+          label: "Valorant",
+          format: "5V5 / BO1",
+          desc: "Read the site. Break the setup. Win the clutch.",
+          rules:
+            "Five-player teams. Standard competitive settings. Match officials have final say on disputes.",
+        },
+        minecraft: {
+          label: "Minecraft",
+          format: "BUILD / TEAM",
+          desc: "Build under pressure. Craft a world worth defending.",
+          rules:
+            "Team build challenge. Judged on brief adherence, creativity and execution. No outside assistance.",
+        },
+        chess: {
+          label: "Chess",
+          format: "RAPID / 10+0",
+          desc: "Every square is a decision. Every second is a weapon.",
+          rules:
+            "Rapid games at the published time control. Touch-move and tournament arbiter decisions apply.",
+        },
+      };
+      const GAME_KEYS = Object.keys(GAMES);
+
+      const DEMO = {
+        settings: {
+          eventDate: CONFIG.EVENT_DATE_FALLBACK,
+          socials: { instagram: "", discord: "", youtube: "" },
+          prizes: {
+            bgmi: { first: "10,000", second: "6,000", third: "4,000" },
+            valorant: { first: "10,000", second: "6,000", third: "4,000" },
+            minecraft: { first: "10,000", second: "6,000", third: "4,000" },
+            chess: { first: "5,000", second: "3,000", third: "2,000" },
+          },
+        },
+        champions: {
+          bgmi: "TBD",
+          valorant: "TBD",
+          minecraft: "TBD",
+          chess: "TBD",
+        },
+        scores: {
+          bgmi: [
+            { team: "Open slot", points: 0 },
+            { team: "Open slot", points: 0 },
+            { team: "Open slot", points: 0 },
+          ],
+          valorant: [
+            { team: "Open slot", points: 0 },
+            { team: "Open slot", points: 0 },
+            { team: "Open slot", points: 0 },
+          ],
+          minecraft: [
+            { team: "Open slot", points: 0 },
+            { team: "Open slot", points: 0 },
+            { team: "Open slot", points: 0 },
+          ],
+          chess: [
+            { team: "Open slot", points: 0 },
+            { team: "Open slot", points: 0 },
+            { team: "Open slot", points: 0 },
+          ],
+        },
+        team: [
+          {
+            id: "demo-1",
+            name: "Open Slot",
+            role: "Event Head",
+            photo: "",
+            instagram: "",
+            linkedin: "",
+          },
+          {
+            id: "demo-2",
+            name: "Open Slot",
+            role: "Tech Lead",
+            photo: "",
+            instagram: "",
+            linkedin: "",
+          },
+          {
+            id: "demo-3",
+            name: "Open Slot",
+            role: "Design",
+            photo: "",
+            instagram: "",
+            linkedin: "",
+          },
+          {
+            id: "demo-4",
+            name: "Open Slot",
+            role: "Social Media",
+            photo: "",
+            instagram: "",
+            linkedin: "",
+          },
+          {
+            id: "demo-5",
+            name: "Open Slot",
+            role: "Volunteers",
+            photo: "",
+            instagram: "",
+            linkedin: "",
+          },
+        ],
+      };
+
+      let db = null;
+      let auth = null;
+      let firebaseReady = false;
+      let state = {
+        settings: DEMO.settings,
+        champions: DEMO.champions,
+        scores: structuredClone(DEMO.scores),
+        publicTeams: [],
+        news: [],
+        registrations: [],
+        organizers: structuredClone(DEMO.team),
+        activeScoreGame: "bgmi",
+      };
+      let unsubscribers = [];
+      let unsubscribeRegistrations = null;
+      // Holds the team name currently being edited in the scoreboard editor.
+      // This lets the admin edit an existing row without retyping the team name.
+      let editingScoreTeam = null;
+
+      const $ = (s) => document.querySelector(s);
+      const $$ = (s) => [...document.querySelectorAll(s)];
+
+      function isFirebaseConfigured() {
+        return (
+          CONFIG.FIREBASE &&
+          CONFIG.FIREBASE.apiKey &&
+          !CONFIG.FIREBASE.apiKey.startsWith("PASTE_") &&
+          CONFIG.FIREBASE.projectId &&
+          !CONFIG.FIREBASE.projectId.startsWith("PASTE_")
+        );
+      }
+
+      function toast(msg) {
+        $("#toastText").textContent = msg;
+        $("#toast").classList.add("show");
+        clearTimeout(window.__toastTimer);
+        window.__toastTimer = setTimeout(
+          () => $("#toast").classList.remove("show"),
+          2200,
+        );
+      }
+
+      function esc(value) {
+        return String(value ?? "").replace(
+          /[&<>"']/g,
+          (m) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#039;",
+            })[m],
+        );
+      }
+
+      function slug(s) {
+        return String(s || "")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      function formatDate(iso) {
+        const d = new Date(iso);
+        if (Number.isNaN(d.getTime())) return "17 OCT 2026";
+        return d
+          .toLocaleDateString("en-IN", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          })
+          .toUpperCase();
+      }
+
+      function initStatic() {
+        $("#gameSelect").innerHTML = GAME_KEYS.map(
+          (k) => `<option value="${k}">${GAMES[k].label}</option>`,
+        ).join("");
+        $("#rosterFilter").innerHTML =
+          `<option value="all">ALL SPORTS</option>` +
+          GAME_KEYS.map(
+            (k) => `<option value="${k}">${GAMES[k].label}</option>`,
+          ).join("");
+        $("#prizeGame").innerHTML = GAME_KEYS.map(
+          (k) => `<option value="${k}">${GAMES[k].label}</option>`,
+        ).join("");
+        $("#scoreGame").innerHTML = GAME_KEYS.map(
+          (k) => `<option value="${k}">${GAMES[k].label}</option>`,
+        ).join("");
+
+        $("#arenaCards").innerHTML = GAME_KEYS.map((k, i) => {
+          const g = GAMES[k];
+          return `<article class="arena-card" style="--bg:linear-gradient(135deg,rgba(255,229,0,.12),rgba(0,0,0,.3));--game-image:url(assets/games/${k}.jpg)">
+        <span class="card-num">0${i + 1}</span><span class="format">${esc(g.format)}</span>
+        <div><h3 class="arena-title">${esc(g.label)}</h3><p class="arena-desc">${esc(g.desc)}</p>
+        <button class="rules-toggle" data-rules="${k}">View rules</button><div class="rules">${esc(g.rules)}</div></div>
+      </article>`;
+        }).join("");
+
+        $$("#arenaCards .rules-toggle").forEach((btn) => {
+          btn.addEventListener("click", () =>
+            btn.closest(".arena-card").classList.toggle("open"),
+          );
+        });
+
+        $("#timeline").innerHTML = [
+          [
+            "17 OCT",
+            "QUALIFIER DROP",
+            "All squads enter the arena. First call at 09:00.",
+          ],
+          [
+            "18 OCT",
+            "SEMIFINAL PRESSURE",
+            "Top performers meet in the bracket.",
+          ],
+          [
+            "19 OCT",
+            "GRAND FINALS",
+            "One stage. Four champions. The clutch moment.",
+          ],
+        ]
+          .map(
+            (x, i) =>
+              `<div class="timeline-item" data-num="0${i + 1}"><div class="date">${x[0]}</div><h3>${x[1]}</h3><p>${x[2]}</p></div>`,
+          )
+          .join("");
+
+        renderNews();
+        /* static fallback news is shown until Firestore supplies items */
+        $("#newsGrid").innerHTML = [
+          [
+            "LIVE",
+            "REGISTRATION IS OPEN",
+            "Squads can submit their details from the registration terminal. Final slots are subject to organizer confirmation.",
+          ],
+          [
+            "SIGNAL",
+            "FOUR ARENAS ONLINE",
+            "BGMI, Valorant, Minecraft and Chess are live on the CLUTCH broadcast grid.",
+          ],
+          [
+            "CONTROL",
+            "SCOREBOARD SYNC",
+            "Official points and champions will appear here instantly as the control tower updates Firestore.",
+          ],
+        ]
+          .map(
+            (x) =>
+              `<article class="news-card"><div class="date">${x[0]}</div><h3>${x[1]}</h3><p>${x[2]}</p></article>`,
+          )
+          .join("");
+      }
+
+      function renderTicker() {
+        const items = GAME_KEYS.map((k) => {
+          const rows = [...(state.scores[k] || [])].sort(
+            (a, b) => (Number(b.points) || 0) - (Number(a.points) || 0),
+          );
+          const top = rows[0];
+          return `<div class="ticker-item"><span class="live-dot"></span>${GAMES[k].label.toUpperCase()} / ${esc(top?.team || "OPEN SLOT")} — ${Number(top?.points || 0)} PTS</div>`;
+        });
+        $("#tickerTrack").innerHTML = items.concat(items).join("");
+      }
+
+      function renderPrizes() {
+        $("#prizesGrid").innerHTML = GAME_KEYS.map((k, i) => {
+          const prize = state.settings.prizes?.[k] || DEMO.settings.prizes[k];
+          return `<article class="prize-card"><div class="eyebrow">0${i + 1} / PODIUM</div><div class="prize-game">${GAMES[k].label}</div><div class="prize-amount">₹${prize.first}</div><div class="payout"><span>01 / CHAMPION</span><b>₹${prize.first}</b></div><div class="payout"><span>02 / FINALIST</span><b>₹${prize.second}</b></div><div class="payout"><span>03 / THIRD</span><b>₹${prize.third}</b></div><div class="champion">CHAMPION: <b>${esc(state.champions[k] || "TBD")}</b></div></article>`;
+        }).join("");
+      }
+
+      function renderNews() {
+        const items = state.news;
+        if (!items.length) return;
+        $("#newsGrid").innerHTML = items
+          .map(
+            (n) =>
+              `<article class="news-card"><div class="date">${esc(n.tag || n.date || "NEWS")}</div><h3>${esc(n.title)}</h3><p>${esc(n.body)}</p></article>`,
+          )
+          .join("");
+      }
+
+      function renderAdminNews() {
+        $("#adminNews").innerHTML = state.news
+          .map(
+            (n) =>
+              `<div class="admin-list-item"><span><b>${esc(n.title)}</b> · ${esc(n.date || "")}</span><span><button class="tiny-btn" data-edit-news="${esc(n.id)}">Edit</button> <button class="danger-btn" data-del-news="${esc(n.id)}">Delete</button></span></div>`,
+          )
+          .join("");
+        $$("[data-edit-news]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              const n = state.news.find((x) => x.id === b.dataset.editNews);
+              window.__newsEdit = n?.id || null;
+              $("#newsTitle").value = n.title;
+              $("#newsBody").value = n.body;
+              $("#newsDate").value = n.date || "";
+              $("#newsTag").value = n.tag || "";
+              $("#saveNews").textContent = "Update news";
+              $("#cancelNewsEdit").style.display = "inline-flex";
+            }),
+        );
+        $$("[data-del-news]").forEach(
+          (b) =>
+            (b.onclick = async () => {
+              if (firebaseReady)
+                await deleteDoc(doc(db, "news", b.dataset.delNews));
+            }),
+        );
+      }
+      function renderScoreTabs() {
+        $("#scoreTabs").innerHTML = GAME_KEYS.map(
+          (k) =>
+            `<button class="tab ${state.activeScoreGame === k ? "active" : ""}" data-game="${k}">${GAMES[k].label}</button>`,
+        ).join("");
+        $$("#scoreTabs .tab").forEach((b) =>
+          b.addEventListener("click", () => {
+            state.activeScoreGame = b.dataset.game;
+            renderScoreboard();
+          }),
+        );
+      }
+      function renderScoreboard() {
+        renderScoreTabs();
+        const rows = [...(state.scores[state.activeScoreGame] || [])].sort(
+          (a, b) => (Number(b.points) || 0) - (Number(a.points) || 0),
+        );
+        if (!rows.length) {
+          $("#scoreboardTable").innerHTML =
+            `<div class="empty">NO SCORES SIGNALLED YET.</div>`;
+          return;
+        }
+        $("#scoreboardTable").innerHTML =
+          `<table class="score-table"><thead><tr><th>Rank</th><th>Team</th><th>Points</th></tr></thead><tbody>
+      ${rows.map((r, i) => `<tr class="${i < 3 ? "top" : ""}"><td><span class="rank">${String(i + 1).padStart(2, "0")}</span></td><td>${esc(r.team)}</td><td><span class="pts">${Number(r.points || 0)}</span></td></tr>`).join("")}
+    </tbody></table>`;
+      }
+
+      function renderRoster() {
+        const filter = $("#rosterFilter").value || "all";
+        const grouped = {};
+        GAME_KEYS.forEach((k) => (grouped[k] = []));
+        state.publicTeams.forEach((r) => {
+          if (grouped[r.game]) grouped[r.game].push(r);
+        });
+        const keys = filter === "all" ? GAME_KEYS : [filter];
+        $("#teamGroups").innerHTML = keys
+          .map(
+            (k) => `
+      <div class="game-group"><h3>${GAMES[k].label}</h3>
+        ${grouped[k].length ? grouped[k].map((r) => `<div class="roster-row"><span>${esc(r.teamName)}</span><span>REGISTERED SQUAD</span></div>`).join("") : `<div class="roster-row"><span>OPEN SLOT</span><span>BE THE FIRST SIGNAL</span></div>`}
+      </div>`,
+          )
+          .join("");
+        $("#rosterCount").textContent =
+          `${String(state.publicTeams.length).padStart(2, "0")} SQUADS SIGNALLED`;
+        $("#regCount").textContent = String(state.publicTeams.length).padStart(
+          2,
+          "0",
+        );
+      }
+
+      function renderOrganizers() {
+        $("#organizerGrid").innerHTML = state.organizers
+          .map(
+            (m) => `
+      <article class="team-card">
+        <div class="portrait">${m.photo ? `<img src="${esc(m.photo)}" alt="">` : ""} </div>
+        <div class="team-info"><div class="team-role">${esc(m.role || "Organizer")}</div><div class="team-name">${esc(m.name)}</div>
+          <div class="team-socials">${m.instagram ? `<a href="${esc(m.instagram)}" target="_blank" rel="noopener">IG ↗</a>` : ""}${m.linkedin ? `<a href="${esc(m.linkedin)}" target="_blank" rel="noopener">LI ↗</a>` : ""}</div>
+        </div>
+      </article>`,
+          )
+          .join("");
+      }
+
+      function renderFooter() {
+        const s = state.settings.socials || {};
+        const links = [
+          ["Instagram", s.instagram],
+          ["Discord / WhatsApp", s.discord],
+          ["YouTube", s.youtube],
+        ].filter((x) => x[1]);
+        $("#footerSocials").innerHTML = links.length
+          ? links
+              .map(
+                ([n, u]) =>
+                  `<a class="social" href="${esc(u)}" target="_blank" rel="noopener">${n} ↗</a>`,
+              )
+              .join("")
+          : `<span class="mono muted" style="font-size:9px">SOCIAL LINKS WILL APPEAR HERE</span>`;
+      }
+
+      function renderAll() {
+        renderTicker();
+        renderPrizes();
+        renderScoreboard();
+        renderRoster();
+        renderOrganizers();
+        renderFooter();
+        $("#heroYear").textContent = new Date(
+          state.settings.eventDate || CONFIG.EVENT_DATE_FALLBACK,
+        ).getFullYear();
+        $("#footerYear").textContent = new Date().getFullYear();
+      }
+
+      function startFirebase() {
+        try {
+          const app = initializeApp(CONFIG.FIREBASE);
+
+          db = getFirestore(app);
+          auth = getAuth(app);
+
+          onAuthStateChanged(auth, (user) => {
+            if (user && user.uid === CONFIG.ADMIN_UID) {
+              adminOpen();
+              subscribeAdminRegistrations();
+            } else {
+              adminClose();
+              if (unsubscribeRegistrations) {
+                unsubscribeRegistrations();
+                unsubscribeRegistrations = null;
+              }
+              state.registrations = [];
+              renderAdminRegistrations();
+            }
+          });
+
+          firebaseReady = true;
+          subscribeFirestore();
+          toast("Firestore live · systems online");
+        } catch (err) {
+          console.error(err);
+          firebaseReady = false;
+          toast("Demo mode · add Firebase config");
+        }
+      }
+
+      function subscribeFirestore() {
+        unsubscribers.forEach((fn) => fn());
+        unsubscribers = [];
+        unsubscribers.push(
+          onSnapshot(
+            doc(db, "settings", "global"),
+            (snap) => {
+              if (snap.exists())
+                state.settings = {
+                  ...DEMO.settings,
+                  ...snap.data(),
+                  socials: {
+                    ...DEMO.settings.socials,
+                    ...(snap.data().socials || {}),
+                  },
+                };
+              renderAll();
+            },
+            (err) => console.warn(err),
+          ),
+        );
+        unsubscribers.push(
+          onSnapshot(
+            doc(db, "champions", "current"),
+            (snap) => {
+              if (snap.exists())
+                state.champions = { ...DEMO.champions, ...snap.data() };
+              renderPrizes();
+            },
+            (err) => console.warn(err),
+          ),
+        );
+        GAME_KEYS.forEach((k) => {
+          unsubscribers.push(
+            onSnapshot(
+              doc(db, "scores", k),
+              (snap) => {
+                state.scores[k] = snap.exists() ? snap.data().rows || [] : [];
+                renderTicker();
+                renderScoreboard();
+                renderAdminScores();
+              },
+              (err) => console.warn(err),
+            ),
+          );
+        });
+        unsubscribers.push(
+          onSnapshot(
+            collection(db, "publicTeams"),
+            (snap) => {
+              state.publicTeams = snap.docs
+                .map((d) => ({ id: d.id, ...d.data() }))
+                .sort(
+                  (a, b) =>
+                    (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0),
+                );
+              renderRoster();
+            },
+            (err) => console.warn(err),
+          ),
+        );
+        unsubscribers.push(
+          onSnapshot(
+            query(collection(db, "news"), orderBy("createdAt", "desc")),
+            (snap) => {
+              state.news = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+              renderNews();
+              renderAdminNews();
+            },
+            (err) => console.warn(err),
+          ),
+        );
+        unsubscribers.push(
+          onSnapshot(
+            collection(db, "team"),
+            (snap) => {
+              state.organizers = snap.docs.map((d) => ({
+                id: d.id,
+                ...d.data(),
+              }));
+              renderOrganizers();
+              renderAdminMembers();
+            },
+            (err) => console.warn(err),
+          ),
+        );
+      }
+
+      function subscribeAdminRegistrations() {
+        if (unsubscribeRegistrations) unsubscribeRegistrations();
+        unsubscribeRegistrations = onSnapshot(
+          collection(db, "registrations"),
+          (snap) => {
+            state.registrations = snap.docs
+              .map((d) => ({ id: d.id, ...d.data() }))
+              .sort(
+                (a, b) =>
+                  (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0),
+              );
+            renderAdminRegistrations();
+          },
+          (err) => console.warn(err),
+        );
+      }
+
+      async function fallbackSheet(action, payload = {}) {
+        if (!CONFIG.SHEET_API_URL)
+          throw new Error(
+            "No Firebase configuration and no Sheet API configured.",
+          );
+        const res = await fetch(CONFIG.SHEET_API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action, ...payload }),
+        });
+        if (!res.ok) throw new Error("Sheet API request failed");
+        return res.json();
+      }
+
+      async function submitRegistration(data) {
+        if (firebaseReady) {
+          const registrationRef = doc(collection(db, "registrations"));
+          const publicTeamRef = doc(db, "publicTeams", registrationRef.id);
+          const batch = writeBatch(db);
+          batch.set(registrationRef, { ...data, createdAt: serverTimestamp() });
+          batch.set(publicTeamRef, {
+            teamName: data.teamName,
+            game: data.game,
+            createdAt: serverTimestamp(),
+          });
+          await batch.commit();
+        } else {
+          await fallbackSheet("register", data);
+          state.publicTeams.push({ id: crypto.randomUUID(), ...data });
+          renderRoster();
+        }
+      }
+      function adminOpen() {
+        $("#adminGate").style.display = "none";
+        $("#adminPanel").classList.add("show");
+        populateAdminSettings();
+        renderAdminScores();
+        renderAdminMembers();
+        renderAdminRegistrations();
+      }
+      function adminClose() {
+        $("#adminGate").style.display = "block";
+        $("#adminPanel").classList.remove("show");
+      }
+      function adminAuthed() {
+        const user = auth?.currentUser;
+        return user && user.uid === CONFIG.ADMIN_UID;
+      }
+
+      function populateAdminSettings() {
+        const d = new Date(
+          state.settings.eventDate || CONFIG.EVENT_DATE_FALLBACK,
+        );
+        if (!Number.isNaN(d.getTime())) {
+          const pad = (n) => String(n).padStart(2, "0");
+          $("#setEventDate").value =
+            `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+        }
+        const s = state.settings.socials || {};
+        $("#setInstagram").value = s.instagram || "";
+        $("#setDiscord").value = s.discord || "";
+        $("#setYoutube").value = s.youtube || "";
+        $("#champBgmi").value = state.champions.bgmi || "";
+        $("#champValorant").value = state.champions.valorant || "";
+        $("#champMinecraft").value = state.champions.minecraft || "";
+        $("#champChess").value = state.champions.chess || "";
+        const prize =
+          state.settings.prizes?.[$("#prizeGame").value || "bgmi"] ||
+          DEMO.settings.prizes.bgmi;
+        $("#prizeFirst").value = prize.first;
+        $("#prizeSecond").value = prize.second;
+        $("#prizeThird").value = prize.third;
+      }
+
+      function renderAdminScores() {
+        const k = $("#scoreGame").value || state.activeScoreGame;
+        const rows = [...(state.scores[k] || [])].sort(
+          (a, b) => (Number(b.points) || 0) - (Number(a.points) || 0),
+        );
+        $("#adminScores").innerHTML =
+          rows
+            .map(
+              (r) =>
+                `<div class="admin-list-item"><span><b>${esc(r.team)}</b> · ${Number(r.points || 0)} pts</span><span style="display:flex;gap:8px;align-items:center"><button class="tiny-btn" data-edit-score="${esc(r.team)}" data-edit-points="${Number(r.points || 0)}">Edit</button><button class="danger-btn" data-del-score="${esc(r.team)}">Remove</button></span></div>`,
+            )
+            .join("") ||
+          `<div class="muted mono" style="font-size:10px">NO ROWS.</div>`;
+
+        $$("#adminScores [data-edit-score]").forEach((btn) =>
+          btn.addEventListener("click", () => {
+            const team = btn.dataset.editScore;
+            const points = btn.dataset.editPoints;
+            editingScoreTeam = team;
+            $("#scoreTeam").value = team;
+            $("#scorePoints").value = points;
+            $("#scoreGame").value = k;
+            $("#addScore").textContent = "Update row";
+            $("#cancelScoreEdit").style.display = "inline-flex";
+            $("#scoreTeam").focus();
+            toast(`Editing ${team}`);
+          }),
+        );
+
+        $$("#adminScores [data-del-score]").forEach((btn) =>
+          btn.addEventListener("click", async () => {
+            const team = btn.dataset.delScore;
+            const current = [...(state.scores[k] || [])].filter(
+              (r) => slug(r.team) !== slug(team),
+            );
+            try {
+              await saveScores(k, current);
+              if (editingScoreTeam && slug(editingScoreTeam) === slug(team))
+                cancelScoreEdit();
+            } catch (e) {
+              toast("Could not remove score");
+            }
+          }),
+        );
+      }
+
+      function cancelScoreEdit() {
+        editingScoreTeam = null;
+        $("#scoreTeam").value = "";
+        $("#scorePoints").value = "";
+        $("#addScore").textContent = "Add / update row";
+        $("#cancelScoreEdit").style.display = "none";
+      }
+
+      async function saveScores(k, rows) {
+        rows.sort((a, b) => (Number(b.points) || 0) - (Number(a.points) || 0));
+        if (firebaseReady)
+          await setDoc(
+            doc(db, "scores", k),
+            { game: k, rows, updatedAt: serverTimestamp() },
+            { merge: true },
+          );
+        else {
+          state.scores[k] = rows;
+          renderAll();
+        }
+        toast(`${GAMES[k].label} scoreboard updated`);
+      }
+
+      function renderAdminMembers() {
+        $("#adminMembers").innerHTML = state.organizers
+          .map(
+            (m) =>
+              `<div class="admin-list-item"><span><b>${esc(m.name)}</b> · ${esc(m.role)}</span><button class="danger-btn" data-del-member="${esc(m.id)}">Remove</button></div>`,
+          )
+          .join("");
+        $$("#adminMembers [data-del-member]").forEach((btn) =>
+          btn.addEventListener("click", async () => {
+            if (!firebaseReady) return;
+            await deleteDoc(doc(db, "team", btn.dataset.delMember));
+            toast("Organizer removed");
+          }),
+        );
+      }
+
+      function renderAdminRegistrations() {
+        $("#adminRegistrations").innerHTML =
+          state.registrations
+            .map(
+              (r) =>
+                `<div class="admin-list-item"><span><b>${esc(r.teamName)}</b> · ${esc(GAMES[r.game]?.label || r.game)} · ${esc(r.captain || "")}</span><button class="danger-btn" data-del-reg="${esc(r.id)}">Delete</button></div>`,
+            )
+            .join("") ||
+          `<div class="muted mono" style="font-size:10px">NO REGISTRATIONS.</div>`;
+        $$("#adminRegistrations [data-del-reg]").forEach((btn) =>
+          btn.addEventListener("click", async () => {
+            if (!firebaseReady) return;
+            const batch = writeBatch(db);
+            batch.delete(doc(db, "registrations", btn.dataset.delReg));
+            batch.delete(doc(db, "publicTeams", btn.dataset.delReg));
+            await batch.commit();
+            toast("Registration deleted");
+          }),
+        );
+      }
+
+      async function seedDemo() {
+        if (!firebaseReady) {
+          toast("Add Firebase config before seeding");
+          return;
+        }
+        await setDoc(doc(db, "settings", "global"), DEMO.settings, {
+          merge: true,
+        });
+        await setDoc(doc(db, "champions", "current"), DEMO.champions, {
+          merge: true,
+        });
+        for (const k of GAME_KEYS)
+          await setDoc(
+            doc(db, "scores", k),
+            { game: k, rows: DEMO.scores[k] },
+            { merge: true },
+          );
+        for (const m of DEMO.team)
+          await setDoc(
+            doc(db, "team", m.id),
+            {
+              name: m.name,
+              role: m.role,
+              photo: m.photo,
+              instagram: m.instagram,
+              linkedin: m.linkedin,
+            },
+            { merge: true },
+          );
+        toast("Demo data seeded");
+      }
+
+      $("#prizeGame").innerHTML = GAME_KEYS.map(
+        (k) => `<option value="${k}">${GAMES[k].label}</option>`,
+      ).join("");
+      $("#savePrizes").onclick = async () => {
+        const k = $("#prizeGame").value,
+          prizes = structuredClone(state.settings.prizes || {});
+        prizes[k] = {
+          first: $("#prizeFirst").value || "0",
+          second: $("#prizeSecond").value || "0",
+          third: $("#prizeThird").value || "0",
+        };
+        await setDoc(
+          doc(db, "settings", "global"),
+          { prizes },
+          { merge: true },
+        );
+      };
+      $("#saveNews").onclick = async () => {
+        const item = {
+          title: $("#newsTitle").value.trim(),
+          body: $("#newsBody").value.trim(),
+          date: $("#newsDate").value,
+          tag: $("#newsTag").value.trim(),
+          createdAt: serverTimestamp(),
+        };
+        if (item.title && item.body) await addDoc(collection(db, "news"), item);
+      };
+      /* UI EVENTS */
+      $("#navToggle").addEventListener("click", () =>
+        $("#navLinks").classList.toggle("open"),
+      );
+      $$("#navLinks a").forEach((a) =>
+        a.addEventListener("click", () =>
+          $("#navLinks").classList.remove("open"),
+        ),
+      );
+      $("#rosterFilter").addEventListener("change", renderRoster);
+
+      $("#registrationForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const status = $("#regStatus");
+        const data = Object.fromEntries(new FormData(form).entries());
+        status.textContent = "TRANSMITTING…";
+        status.className = "form-status";
+        try {
+          await submitRegistration(data);
+          status.textContent = "REGISTRATION RECEIVED. WATCH THE ROSTER.";
+          status.className = "form-status ok";
+          form.reset();
+          $("#gameSelect").value = "bgmi";
+        } catch (err) {
+          console.error(err);
+          status.textContent =
+            err.message || "Transmission failed. Check Firebase configuration.";
+          status.className = "form-status err";
+        }
+      });
+
+      const trailerBtn = $("#trailerBtn");
+      if (trailerBtn) {
+        trailerBtn.addEventListener("click", () =>
+          $("#trailerModal").classList.add("show"),
+        );
+      }
+
+      const closeTrailer = $("#closeTrailer");
+      if (closeTrailer) {
+        closeTrailer.addEventListener("click", () =>
+          $("#trailerModal").classList.remove("show"),
+        );
+      }
+
+      const trailerModal = $("#trailerModal");
+      if (trailerModal) {
+        trailerModal.addEventListener("click", (e) => {
+          if (e.target.id === "trailerModal")
+            trailerModal.classList.remove("show");
+        });
+      }
+
+      $("#adminLogin").addEventListener("click", async () => {
+        const password = $("#adminPassword").value;
+
+        if (!password) {
+          $("#adminStatus").textContent = "ENTER PASSWORD.";
+          $("#adminStatus").className = "form-status err";
+          return;
+        }
+
+        try {
+          await signInWithEmailAndPassword(auth, CONFIG.ADMIN_EMAIL, password);
+
+          $("#adminPassword").value = "";
+          $("#adminStatus").textContent = "";
+          adminOpen();
+        } catch (error) {
+          console.error("Admin login error:", error);
+
+          $("#adminStatus").textContent = "ACCESS DENIED.";
+          $("#adminStatus").className = "form-status err";
+        }
+      });
+
+      $("#adminLogout").addEventListener("click", async () => {
+        try {
+          await signOut(auth);
+          adminClose();
+        } catch (error) {
+          console.error("Admin logout error:", error);
+        }
+      });
+      $("#refreshAdmin").addEventListener("click", () => {
+        populateAdminSettings();
+        renderAdminScores();
+        renderAdminMembers();
+        renderAdminRegistrations();
+        toast("Control data refreshed");
+      });
+      $("#scoreGame").addEventListener("change", () => {
+        // Changing games starts a fresh add operation rather than carrying an edit across games.
+        cancelScoreEdit();
+        renderAdminScores();
+      });
+      $("#cancelScoreEdit").addEventListener("click", cancelScoreEdit);
+
+      $("#saveSettings").addEventListener("click", async () => {
+        const localDate = $("#setEventDate").value;
+        const settings = {
+          eventDate: localDate
+            ? new Date(localDate).toISOString()
+            : CONFIG.EVENT_DATE_FALLBACK,
+          socials: {
+            instagram: $("#setInstagram").value.trim(),
+            discord: $("#setDiscord").value.trim(),
+            youtube: $("#setYoutube").value.trim(),
+          },
+        };
+        try {
+          if (firebaseReady)
+            await setDoc(doc(db, "settings", "global"), settings, {
+              merge: true,
+            });
+          else {
+            state.settings = settings;
+            renderAll();
+          }
+          toast("Event settings saved");
+        } catch (e) {
+          toast("Could not save settings");
+        }
+      });
+
+      $("#addScore").addEventListener("click", async () => {
+        const k = $("#scoreGame").value,
+          team = $("#scoreTeam").value.trim(),
+          points = Number($("#scorePoints").value);
+        if (!team) return;
+        // If an existing row is being edited, remove the old row first. This also
+        // permits changing the team name while keeping the same edit workflow.
+        const oldTeam = editingScoreTeam;
+        let rows = [...(state.scores[k] || [])];
+        if (oldTeam) rows = rows.filter((r) => slug(r.team) !== slug(oldTeam));
+        rows = rows.filter((r) => slug(r.team) !== slug(team));
+        rows.push({ team, points });
+        try {
+          await saveScores(k, rows);
+          cancelScoreEdit();
+        } catch (e) {
+          toast("Could not update scores");
+        }
+      });
+
+      $("#saveChampions").addEventListener("click", async () => {
+        const champs = {
+          bgmi: $("#champBgmi").value.trim() || "TBD",
+          valorant: $("#champValorant").value.trim() || "TBD",
+          minecraft: $("#champMinecraft").value.trim() || "TBD",
+          chess: $("#champChess").value.trim() || "TBD",
+        };
+        try {
+          if (firebaseReady)
+            await setDoc(doc(db, "champions", "current"), champs, {
+              merge: true,
+            });
+          else {
+            state.champions = champs;
+            renderPrizes();
+          }
+          toast("Champions locked");
+        } catch (e) {
+          toast("Could not save champions");
+        }
+      });
+
+      $("#addMember").addEventListener("click", async () => {
+        const member = {
+          name: $("#memberName").value.trim(),
+          role: $("#memberRole").value.trim(),
+          photo: $("#memberPhoto").value.trim(),
+          instagram: $("#memberInsta").value.trim(),
+          linkedin: $("#memberLinkedin").value.trim(),
+        };
+        if (!member.name || !member.role) return;
+        try {
+          if (firebaseReady) await addDoc(collection(db, "team"), member);
+          else {
+            state.organizers.push({ ...member, id: crypto.randomUUID() });
+            renderOrganizers();
+            renderAdminMembers();
+          }
+          [
+            "memberName",
+            "memberRole",
+            "memberPhoto",
+            "memberInsta",
+            "memberLinkedin",
+          ].forEach((id) => ($("#" + id).value = ""));
+          toast("Organizer added");
+        } catch (e) {
+          toast("Could not add organizer");
+        }
+      });
+
+      $("#prizeGame").addEventListener("change", populateAdminSettings);
+      $("#savePrizes").addEventListener("click", async () => {
+        const k = $("#prizeGame").value;
+        const prizes = structuredClone(
+          state.settings.prizes || DEMO.settings.prizes,
+        );
+        prizes[k] = {
+          first: $("#prizeFirst").value.trim() || "0",
+          second: $("#prizeSecond").value.trim() || "0",
+          third: $("#prizeThird").value.trim() || "0",
+        };
+        await setDoc(
+          doc(db, "settings", "global"),
+          { prizes },
+          { merge: true },
+        );
+        toast("Prize pool saved");
+      });
+      $("#saveNews").addEventListener("click", async () => {
+        const item = {
+          title: $("#newsTitle").value.trim(),
+          body: $("#newsBody").value.trim(),
+          date: $("#newsDate").value,
+          tag: $("#newsTag").value.trim(),
+          createdAt: serverTimestamp(),
+        };
+        if (!item.title || !item.body) return;
+        if (window.__newsEdit)
+          await updateDoc(doc(db, "news", window.__newsEdit), item);
+        else await addDoc(collection(db, "news"), item);
+        window.__newsEdit = null;
+        $("#saveNews").textContent = "Publish news";
+        $("#cancelNewsEdit").style.display = "none";
+        $("#newsTitle").value =
+          $("#newsBody").value =
+          $("#newsDate").value =
+          $("#newsTag").value =
+            "";
+      });
+      $("#cancelNewsEdit").addEventListener("click", () => {
+        window.__newsEdit = null;
+        $("#saveNews").textContent = "Publish news";
+        $("#cancelNewsEdit").style.display = "none";
+      });
+      $("#seedDemo").addEventListener("click", seedDemo);
+
+      window.addEventListener(
+        "scroll",
+        () => $("#nav").classList.toggle("scrolled", scrollY > 30),
+        { passive: true },
+      );
+
+      // Global click lightning. It is deliberately one listener and never prevents the click.
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        document.addEventListener(
+          "click",
+          (e) => {
+            if (e.button !== 0) return;
+            const fx = document.createElement("div");
+            fx.className = "click-fx";
+            fx.style.left = e.clientX + "px";
+            fx.style.top = e.clientY + "px";
+            fx.innerHTML =
+              '<span class="flash"></span><span class="bolt"></span><span class="ring"></span>';
+            document.body.appendChild(fx);
+            setTimeout(() => fx.remove(), 480);
+          },
+          { passive: true },
+        );
+      }
+
+      // Decorative embers.
+      const emberBox = $("#embers");
+      for (let i = 0; i < 38; i++) {
+        const e = document.createElement("i");
+        e.className = "ember";
+        e.style.left = Math.random() * 100 + "%";
+        e.style.top = 25 + Math.random() * 75 + "%";
+        e.style.animationDelay = -Math.random() * 8 + "s";
+        e.style.animationDuration = 5 + Math.random() * 7 + "s";
+        e.style.setProperty("--dx", Math.random() * 120 - 60 + "px");
+        emberBox.appendChild(e);
+      }
+      setInterval(() => {
+        $("#wordmark").classList.add("glitch");
+        setTimeout(() => $("#wordmark").classList.remove("glitch"), 700);
+      }, 7000);
+
+      initStatic();
+      renderAll();
+      if (adminAuthed()) adminOpen();
+      if (isFirebaseConfigured()) startFirebase();
+      else toast("Preview mode · configure Firebase to go live");
+
+      /* =========================================
+   GLOBAL CLICK LIGHTNING
+   ========================================= */
+
+      document.addEventListener("click", (event) => {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          return;
+        }
+
+        const lightning = document.createElement("div");
+        lightning.className = "click-lightning";
+
+        lightning.style.left = `${event.clientX}px`;
+        lightning.style.top = `${event.clientY}px`;
+
+        lightning.innerHTML = `
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+
+      <path
+        d="M48 4
+           L39 27
+           L47 25
+           L35 48
+           L45 44
+           L31 75"
+      />
+
+      <path
+        d="M53 10
+           L63 31
+           L56 29
+           L68 50
+           L58 47
+           L72 70"
+      />
+
+      <circle
+        class="flash"
+        cx="50"
+        cy="43"
+        r="4"
+      />
+
+    </svg>
+  `;
+
+        document.body.appendChild(lightning);
+
+        setTimeout(() => {
+          lightning.remove();
+        }, 500);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.uid == 'gNlNvVcDE5SfRCgK5eeFCK8dnaL2';
+    }
+
+    function isNonEmptyString(value, maxLength) {
+      return value is string && value.size() > 0 && value.size() <= maxLength;
+    }
+
+    function isValidRegistration() {
+      return request.resource.data.keys().hasOnly([
+          'teamName', 'game', 'classSection', 'captain', 'contact', 'members', 'createdAt'
+        ])
+        && request.resource.data.keys().hasAll([
+          'teamName', 'game', 'classSection', 'captain', 'contact', 'members', 'createdAt'
+        ])
+        && isNonEmptyString(request.resource.data.teamName, 80)
+        && request.resource.data.game in ['bgmi', 'valorant', 'minecraft', 'chess']
+        && isNonEmptyString(request.resource.data.classSection, 40)
+        && isNonEmptyString(request.resource.data.captain, 80)
+        && isNonEmptyString(request.resource.data.contact, 160)
+        && isNonEmptyString(request.resource.data.members, 500)
+        && request.resource.data.createdAt is timestamp;
+    }
+
+    function isValidPublicTeam() {
+      return request.resource.data.keys().hasOnly(['teamName', 'game', 'createdAt'])
+        && request.resource.data.keys().hasAll(['teamName', 'game', 'createdAt'])
+        && isNonEmptyString(request.resource.data.teamName, 80)
+        && request.resource.data.game in ['bgmi', 'valorant', 'minecraft', 'chess']
+        && request.resource.data.createdAt is timestamp;
+    }
+
+    match /registrations/{registrationId} {
+      // A public registration is created atomically with its safe directory entry.
+      allow create: if isAdmin() || (
+        isValidRegistration()
+        && existsAfter(/databases/$(database)/documents/publicTeams/$(registrationId))
+        && getAfter(/databases/$(database)/documents/publicTeams/$(registrationId)).data.teamName
+          == request.resource.data.teamName
+        && getAfter(/databases/$(database)/documents/publicTeams/$(registrationId)).data.game
+          == request.resource.data.game
+      );
+      allow read, update, delete: if isAdmin();
+    }
+
+    // This collection deliberately contains no captain, contact, class, or member data.
+    match /publicTeams/{teamId} {
+      allow read: if true;
+      allow create: if isAdmin() || (
+        isValidPublicTeam()
+        && existsAfter(/databases/$(database)/documents/registrations/$(teamId))
+        && getAfter(/databases/$(database)/documents/registrations/$(teamId)).data.teamName
+          == request.resource.data.teamName
+        && getAfter(/databases/$(database)/documents/registrations/$(teamId)).data.game
+          == request.resource.data.game
+      );
+      allow update, delete: if isAdmin();
+    }
+
+    match /scores/{gameId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /champions/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /team/{memberId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /settings/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    match /news/{newsId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}
