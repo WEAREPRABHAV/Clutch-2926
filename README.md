@@ -1,27 +1,25 @@
 # CLUTCH / 26 — School Esports Festival
 
-A single-file, vanilla-JS esports tournament site with Firebase Firestore real-time sync and a client-side admin console.
+A single-file, vanilla-JS esports tournament site with Firebase real-time sync and an authenticated admin console.
 
 ## 1. Files
 
 - `index.html` — the complete website.
+- `admin.html` — the admin entry page.
+- `api/team-photo.js` — authenticated Vercel Function for organizer photo uploads.
+- `package.json` — server-only function dependencies.
 - `firestore.rules` — starter Firestore rules.
+- `storage.rules` — legacy Firebase Storage rules; the website does not use Firebase Storage.
 - `vercel.json` — optional Vercel configuration.
 - `README.md` — this setup guide.
 
 ## 2. Firebase setup (recommended)
 
-1. Open Firebase Console: https://console.firebase.google.com/
-2. Create a project.
-3. Add a **Web App** to the project.
-4. Go to **Build → Firestore Database → Create database**.
-5. Start in production/test mode as appropriate, then replace the rules with the included `firestore.rules`.
-6. Copy your Web App Firebase config.
-7. Open `index.html` and replace the values under:
-   `CONFIG.FIREBASE`
-8. Change:
-   `CONFIG.ADMIN_PASSWORD`
-   to a password only the event organizers know.
+1. In the existing Firebase project, enable **Authentication → Sign-in method → Email/Password** and create the authorized administrator account.
+2. Confirm its UID matches the UID in `CONFIG.ADMIN_UID` and `firestore.rules`.
+3. Enable Cloud Firestore and deploy `firestore.rules`.
+4. Verify the Firebase web configuration in `index.html` matches the project. The web config is public by design; Firestore rules enforce access.
+5. For organizer photos, use the secure Vercel Blob setup in section 5. Firebase Storage is not used or required.
 
 ### Firestore structure used by this site
 
@@ -40,56 +38,71 @@ A single-file, vanilla-JS esports tournament site with Firebase Firestore real-t
 
 Each score document contains a `rows` array of `{team, points}` objects.
 
-- `champions/current`
-  - bgmi
-  - valorant
-  - minecraft
-  - chess
 - `team/{autoId}`
   - name
   - role
-  - photo (optional URL)
+  - photo (optional public Vercel Blob URL)
+  - photoPath (optional Blob pathname)
   - instagram (optional URL)
   - linkedin (optional URL)
 - `settings/global`
-  - eventDate
+  - eventDate (ISO 8601 string written from the browser's local event date/time)
   - socials.instagram
   - socials.discord
   - socials.youtube
+- `news/{autoId}`
+  - title, body, date (YYYY-MM-DD), tag (optional), createdAt (Firestore timestamp)
 
-The public site uses Firestore `onSnapshot()` listeners, so scoreboard, registrations, champions and organizer updates appear without a page refresh.
+The public site uses Firestore `onSnapshot()` listeners, so scoreboard, registrations, news and organizer updates appear without a page refresh.
 
-## 3. Important security note
+## 3. Admin authentication and access control
 
-The requested admin login is intentionally a **client-side password gate**. That is suitable only for a low-stakes school event.
-
-A client-side password is NOT a real security boundary: someone with browser/devtools access can inspect the deployed JavaScript. If you need real admin security, use Firebase Authentication and Firestore Security Rules based on authenticated admin accounts.
+Admin sign-in uses Firebase Email/Password Authentication. The browser requests credentials each time the admin page opens and keeps the Firebase session in memory only. The console opens after Firebase confirms the exact configured UID. Never put an administrator password in this repository or web client configuration.
 
 ## 4. Firestore rules
 
-The supplied rules allow public registration creation/read and authenticated/admin-style writes. Because this exact site uses the simple client-side gate, you may choose to temporarily allow writes for the event — but understand that this lets technically capable visitors write data.
+`firestore.rules` keeps registrations private to the authorized admin while allowing public registration through an atomic write to the safe `publicTeams` directory. Protected public data is readable publicly and writable only by the exact admin UID. Team photos are stored in Vercel Blob by the server function and referenced from `team/{memberId}`. The function verifies the Firebase ID token and exact admin UID before using the Firebase Admin SDK to update Firestore; Admin SDK writes bypass Firestore rules, so the server-side UID check and private credentials are required parts of this boundary. The existing `storage.rules` file is not used by this website's photo flow and does not need to be deployed for it.
 
-For a real deployment, the safer path is:
+Deploy `firestore.rules` from the Firebase Console Rules tab or with the Firebase CLI. The server function uses the existing `team/{memberId}` collection and schema; no Firestore rule changes are required.
 
-- enable Firebase Authentication;
-- create organizer accounts;
-- require `request.auth != null` for admin writes;
-- optionally maintain an `admins/{uid}` document and check it in rules.
+## 5. Vercel deployment and team photos
 
-## 5. Vercel deployment — fastest path
+Vercel serves the static website and builds `api/team-photo.js` as a Node.js 22.x Function (selected in `package.json`). The function uses the official `@vercel/blob` SDK and Firebase Admin SDK. It accepts JPEG, PNG, and WebP files up to 4 MiB, checks both the declared media type and file signature, and limits the complete multipart request to 4,400,000 bytes to stay below Vercel's 4.5 MB function request body limit. Blob images are public so the public team section can render them.
+
+### Required server environment variables
+
+Configure these in the Vercel project settings for **Production** and **Preview**. Add **Development** values too if using `vercel dev` locally:
+
+- `BLOB_READ_WRITE_TOKEN` — a read/write token for the public `clutch-team-photos` Blob store. Keep it server-side; it is never sent to the browser.
+- `FIREBASE_PROJECT_ID` — `clutch-esports-2026`.
+- `FIREBASE_CLIENT_EMAIL` — the `client_email` from a Firebase service account in this project.
+- `FIREBASE_PRIVATE_KEY` — the `private_key` from that service account JSON. Store it as a Vercel secret environment variable. If entering it with escaped newlines, use `\n`; the function converts these to PEM line breaks.
+
+The function does not use `BLOB_STORE_ID` or `BLOB_WEBHOOK_PUBLIC_KEY`; the read/write token must belong to the intended Blob store. The store must allow public access for image delivery.
+
+### Create and configure the Firebase Admin service account
+
+1. In Google Cloud Console for `clutch-esports-2026`, create a dedicated service account for this function. Grant the minimum Firestore data role your IAM policy allows (typically Cloud Datastore User, `roles/datastore.user`). Firestore IAM data roles are granted at project scope and can access other Firestore documents too; the function code itself only accesses `team/{memberId}`, so protect the service-account key as a high-privilege secret.
+2. Create a private key for that service account and use its `project_id`, `client_email`, and `private_key` values for the three `FIREBASE_*` variables above. Do not commit or upload the JSON key file to this repository. Never put these values in `index.html` or other browser code.
+3. In Vercel → Project Settings → Environment Variables, add the three `FIREBASE_*` variables and `BLOB_READ_WRITE_TOKEN` to Production and Preview. Vercel stores them server-side. Redeploy after changing Vercel environment variables so the function receives them.
+4. For local testing, put the same variables in an ignored `.env.local` file or use `vercel env pull .env.local`, then run `npm install` and `vercel dev`. Do not share or commit `.env.local`.
+
+If these server variables are absent or invalid, photo requests fail closed with a setup error. Ordinary site loading, Firebase sign-in, registration, news, scores, settings, and organizer-detail editing continue to use their existing paths.
+
+### Existing Vercel deployment options
 
 ### Option A: GitHub
 
 1. Create a GitHub repository, e.g. `clutch-esports`.
-2. Upload `index.html`, `admin.html`, `firestore.rules`, `vercel.json`, and `README.md`.
+2. Upload `index.html`, `admin.html`, `api/`, `package.json`, `firestore.rules`, `storage.rules`, `vercel.json`, and `README.md`.
 3. Go to https://vercel.com/
 4. Import the GitHub repository.
 5. Framework preset: **Other** (or leave automatic).
 6. Build command: **leave empty**.
 7. Output directory: **leave empty**.
-8. Deploy.
+8. Deploy. Vercel detects the `api/` Node.js Function automatically; no framework or build command is needed for the static files.
 
-Because this is static HTML, Vercel does not need a build step.
+The website remains static HTML/CSS/vanilla JavaScript; only the photo API runs as a serverless function.
 
 ### Option B: Vercel CLI
 
@@ -132,18 +145,16 @@ FIREBASE: {
 }
 ```
 
-### Admin password
+### Admin account
 
-```js
-ADMIN_PASSWORD: "your-real-event-password"
-```
+Create the admin account in Firebase Authentication. Keep its UID consistent with the UID in both rules files and `CONFIG.ADMIN_UID`. No password is stored in this project.
 
 ### Event date
 
 The default is:
 
 ```text
-2026-10-17 09:00 IST
+October 17, 2026 at 09:00 IST
 ```
 
 The admin console can also update the event date after Firebase is connected.
@@ -156,13 +167,13 @@ Use the Admin → Event Settings panel. Empty social URLs are intentionally not 
 
 Open `/admin.html` on the deployed site (for example, `https://your-site.vercel.app/admin.html`).
 
-1. Enter the password.
+1. Sign in with the authorized Firebase email and password.
 2. Update event date/social links.
 3. Add scoreboard rows.
-4. Set the four champions.
-5. Add organizer/event-team members.
-6. Delete registrations when needed.
-7. Lock the console after editing.
+4. Add organizer/event-team members.
+5. Delete registrations when needed.
+6. Upload, replace, or remove organizer photos in the Our Team editor. Photos are optional; organizer details can still be edited without changing a photo.
+7. Lock the console when finished. Re-entering `/admin.html` requests credentials again.
 
 Scoreboard rows are sorted by points automatically.
 
@@ -200,12 +211,11 @@ The website currently keeps Firebase as the primary production data layer. For t
 - live ticker from scoreboard data
 - event timeline
 - Firestore-backed registration form
-- prize pool + champions
 - live tabbed scoreboard
 - news cards
 - live teams directory
 - dedicated organizer "Our Team" section
-- client-side admin console
+- Firebase Authentication protected admin console
 - Firestore real-time listeners
 - social links controlled by admin
 - responsive mobile navigation/layout

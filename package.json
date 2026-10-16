@@ -1,0 +1,15 @@
+{
+  "name": "clutch-2926",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "check:api": "node --check api/team-photo.js"
+  },
+  "dependencies": {
+    "@vercel/blob": "2.8.1",
+    "busboy": "1.6.0",
+    "firebase-admin": "13.4.0"
+  }
+}
