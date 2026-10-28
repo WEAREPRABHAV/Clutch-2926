@@ -165,7 +165,7 @@ Use the Admin → Event Settings panel. Empty social URLs are intentionally not 
 
 ## 7. Using the admin console
 
-Open `/admin.html` on the deployed site (for example, `https://your-site.vercel.app/admin.html`).
+Open `/admin` on the deployed site (for example, `https://your-site.vercel.app/admin`).
 
 1. Sign in with the authorized Firebase email and password.
 2. Update event date/social links.
@@ -173,7 +173,28 @@ Open `/admin.html` on the deployed site (for example, `https://your-site.vercel.
 4. Add organizer/event-team members.
 5. Delete registrations when needed.
 6. Upload, replace, or remove organizer photos in the Our Team editor. Photos are optional; organizer details can still be edited without changing a photo.
-7. Lock the console when finished. Re-entering `/admin.html` requests credentials again.
+7. Lock the console when finished. Re-entering `/admin` requests credentials again.
+
+### Organizer photo uploads
+
+Organizer records remain in the existing Firestore `team/{memberId}` collection. `photo` stores the HTTPS delivery URL and `photoPath` stores the managed asset identifier. Existing Vercel Blob URLs continue to display. Legacy Blob identifiers are recognized separately and are never sent to Cloudinary for deletion.
+
+The browser asks the Next.js server for a short-lived signed upload using the Firebase admin ID token, uploads the image directly to Cloudinary, then asks the server to verify the returned asset and save it to the selected organizer record. The API secret stays on the server. No unsigned upload preset is used.
+
+In the Cloudinary Console, open **Settings → API Keys** and use the account's cloud name, API key, and API secret. No unsigned upload preset is required. The app places assets under `clutch/team-photos` and signs the exact member-specific public ID and allowed formats.
+
+Copy `.env.example` to `.env.local` and configure these server-side variables locally and in the existing Vercel project's Environment Variables for each environment you use:
+
+- `FIREBASE_PROJECT_ID` (must be `clutch-esports-2026`)
+- `FIREBASE_CLIENT_EMAIL`
+- `FIREBASE_PRIVATE_KEY`
+- `CLOUDINARY_CLOUD_NAME`
+- `CLOUDINARY_API_KEY`
+- `CLOUDINARY_API_SECRET`
+
+`BLOB_READ_WRITE_TOKEN` is optional and is used only to clean up managed legacy Blob photos after their Firestore reference has changed. Keep all of these credentials out of client code and source control.
+
+Run the local app with `npm run dev`, then open `http://localhost:3000/admin`. The local Next.js API routes handle signed uploads; the old root-level Vercel function remains for backward compatibility.
 
 Scoreboard rows are sorted by points automatically.
 
