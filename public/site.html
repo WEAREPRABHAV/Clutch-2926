@@ -1241,6 +1241,38 @@
         border-color: var(--yellow);
         color: #fff;
       }
+      .footer-partners {
+        margin-top: 42px;
+      }
+      .footer-partners-title {
+        margin: 0 0 14px;
+        color: #888;
+        font: 600 10px "IBM Plex Mono";
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .footer-partners-logos {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+      }
+      .footer-partner-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: min(210px, calc(50vw - 30px));
+        height: 82px;
+        padding: 10px 16px;
+        background: #fff;
+        border: 1px solid #dedede;
+      }
+      .footer-partner-logo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
       .footer-bottom {
         border-top: 1px solid #1e1e22;
         margin-top: 50px;
@@ -2561,6 +2593,19 @@
           </div>
           <div class="socials" id="footerSocials"></div>
         </div>
+        <section class="footer-partners" aria-labelledby="footer-partners-title">
+          <h2 class="footer-partners-title" id="footer-partners-title">
+            Event &amp; Institutional Partners
+          </h2>
+          <div class="footer-partners-logos">
+            <div class="footer-partner-logo">
+              <img src="/assets/sunbeam-school-logo.jpeg" alt="Sunbeam School logo" />
+            </div>
+            <div class="footer-partner-logo">
+              <img src="/assets/sfi-logo.jpeg" alt="SFI logo" />
+            </div>
+          </div>
+        </section>
         <div class="footer-bottom">
           <span>STRATEGY MEETS PASSION. PLAY CLEAN. PLAY LOUD.</span>
           <span
