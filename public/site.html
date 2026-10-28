@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#050505" />
-    <meta name="description" content="CLUTCH â€” School Esports Festival 2026" />
+    <meta name="description" content="CLUTCH — School Esports Festival 2026" />
     <script>
       const isAdminView =
         new URLSearchParams(location.search).has("admin") ||
@@ -13,7 +13,7 @@
         isAdminView ? "admin-route" : "public-route",
       );
     </script>
-    <title>CLUTCH / 26 â€” School Esports Festival</title>
+    <title>CLUTCH / 26 — School Esports Festival</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -771,10 +771,10 @@
         margin-top: 10px;
       }
       .arena-card.open .rules-toggle:after {
-        content: "  â†‘";
+        content: "  ↑";
       }
       .rules-toggle:after {
-        content: "  â†“";
+        content: "  ↓";
       }
 
       /* GENERIC DARK/WHITE SPLIT */
@@ -1127,7 +1127,7 @@
       }
 
       /* ADMIN */
-.admin {
+      .admin {
         background: #050506;
       }
       /* The control console is intentionally isolated at /admin. */
@@ -1151,7 +1151,9 @@
         display: none;
       }
       /* The privileged console stays hidden until Firebase confirms the admin UID. */
-      #adminPanel:not(.show) { display: none !important; }
+      #adminPanel:not(.show) {
+        display: none !important;
+      }
       .admin-panel.show {
         display: block;
       }
@@ -1912,7 +1914,7 @@
     <header class="nav" id="nav">
       <div class="nav-inner">
         <a class="brand" href="#home" aria-label="CLUTCH home">
-          <span class="brand-mark">âš¡</span
+          <span class="brand-mark">⚡</span
           ><span class="brand-name">CLUTCH</span
           ><span class="brand-suffix">/26</span>
         </a>
@@ -1925,9 +1927,9 @@
           <a href="#news">News</a>
           <a href="/admin">Admin</a>
         </nav>
-        <a class="btn btn-yellow nav-cta" href="#register">Apply Now â†—</a>
+        <a class="btn btn-yellow nav-cta" href="#register">Apply Now ↗</a>
         <button class="nav-toggle" id="navToggle" aria-label="Open menu">
-          â˜°
+          ☰
         </button>
       </div>
     </header>
@@ -1957,7 +1959,7 @@
 
         <div class="hero-content">
           <div class="hero-kicker">
-            SCHOOL ESPORTS FESTIVAL <b>â€¢</b> <span id="heroYear">2026</span>
+            SCHOOL ESPORTS FESTIVAL <b>•</b> <span id="heroYear">2026</span>
           </div>
           <div class="wordmark wordmark-electric" id="wordmark">
             <svg
@@ -2009,12 +2011,22 @@
         <div class="countdown" aria-live="polite">
           <div class="countdown-title">Event begins in</div>
           <div class="countdown-grid">
-            <div class="time-box"><strong id="countDays">--</strong><span>Days</span></div>
-            <div class="time-box"><strong id="countHours">--</strong><span>Hours</span></div>
-            <div class="time-box"><strong id="countMinutes">--</strong><span>Minutes</span></div>
-            <div class="time-box"><strong id="countSeconds">--</strong><span>Seconds</span></div>
+            <div class="time-box">
+              <strong id="countDays">--</strong><span>Days</span>
+            </div>
+            <div class="time-box">
+              <strong id="countHours">--</strong><span>Hours</span>
+            </div>
+            <div class="time-box">
+              <strong id="countMinutes">--</strong><span>Minutes</span>
+            </div>
+            <div class="time-box">
+              <strong id="countSeconds">--</strong><span>Seconds</span>
+            </div>
           </div>
-          <div class="countdown-date" id="countdownDate">Event date loading</div>
+          <div class="countdown-date" id="countdownDate">
+            Event date loading
+          </div>
         </div>
       </section>
 
@@ -2050,7 +2062,7 @@
               that become school history.
             </p>
             <a class="btn btn-yellow" href="#register" style="margin-top: 28px"
-              >Secure your slot â†—</a
+              >Secure your slot ↗</a
             >
           </div>
           <div class="timeline" id="timeline"></div>
@@ -2113,7 +2125,7 @@
               </div>
               <div class="field">
                 <label class="form-label">Class / Section</label
-                ><input name="classSection" required placeholder="XI â€” A" />
+                ><input name="classSection" required placeholder="XI — A" />
               </div>
               <div class="field">
                 <label class="form-label">Captain Name</label
@@ -2135,7 +2147,7 @@
               </div>
             </div>
             <button class="btn btn-yellow" type="submit">
-              Transmit Registration â†—
+              Transmit Registration ↗
             </button>
             <div class="form-status" id="regStatus"></div>
             <div class="form-note">
@@ -2247,7 +2259,9 @@
             <div class="admin-card">
               <h3>Access terminal</h3>
 
-              <label class="form-label" for="adminPassword">Admin password</label>
+              <label class="form-label" for="adminPassword"
+                >Admin password</label
+              >
               <input
                 id="adminPassword"
                 type="password"
@@ -2259,15 +2273,28 @@
                 id="adminLogin"
                 style="margin-top: 14px"
               >
-                Unlock console â†—
+                Unlock console ↗
               </button>
-              <div class="form-status" id="adminStatus" role="status" aria-live="polite"></div>
+              <div
+                class="form-status"
+                id="adminStatus"
+                role="status"
+                aria-live="polite"
+              ></div>
             </div>
           </div>
 
           <div class="admin-panel" id="adminPanel">
             <div class="admin-actions">
-              <button class="tiny-btn" id="seedDemo" type="button" disabled title="Disabled for the configured Firebase project">Demo seeding disabled</button>
+              <button
+                class="tiny-btn"
+                id="seedDemo"
+                type="button"
+                disabled
+                title="Disabled for the configured Firebase project"
+              >
+                Demo seeding disabled
+              </button>
               <button class="tiny-btn" id="adminLogout">Lock console</button>
               <button class="tiny-btn" id="refreshAdmin">Refresh data</button>
             </div>
@@ -2310,8 +2337,20 @@
               >
                 Save event date
               </button>
-              <span id="eventDateStatus" class="form-status" role="status" aria-live="polite"></span>
-              <button class="tiny-btn" id="saveSettings" type="button" style="margin-top: 14px">Save social links</button>
+              <span
+                id="eventDateStatus"
+                class="form-status"
+                role="status"
+                aria-live="polite"
+              ></span>
+              <button
+                class="tiny-btn"
+                id="saveSettings"
+                type="button"
+                style="margin-top: 14px"
+              >
+                Save social links
+              </button>
             </div>
 
             <div class="admin-card">
@@ -2394,17 +2433,76 @@
                   ><input id="memberRole" placeholder="Event Head" />
                 </div>
                 <div>
-                  <label class="form-label" for="memberPhotoFile">Organizer photo (JPEG, PNG, WebP; up to 4 MB)</label>
-                  <input id="memberPhotoFile" type="file" accept="image/jpeg,image/png,image/webp" />
+                  <label class="form-label" for="memberPhotoFile"
+                    >Organizer photo (JPEG, PNG, WebP; up to 4 MB)</label
+                  >
+                  <input
+                    id="memberPhotoFile"
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp"
+                  />
                   <input id="memberPhoto" type="hidden" />
-                  <div class="admin-row" style="margin-top:8px;gap:10px;align-items:start">
-                    <div><span class="form-label">Current photo</span><img id="memberCurrentPhoto" alt="Current organizer photo" hidden style="width:88px;height:88px;object-fit:cover" /></div>
-                    <div><span class="form-label">Selected preview</span><img id="memberPhotoPreview" alt="Selected organizer photo preview" hidden style="width:88px;height:88px;object-fit:cover" /></div>
+                  <div
+                    class="admin-row"
+                    style="margin-top: 8px; gap: 10px; align-items: start"
+                  >
+                    <div>
+                      <span class="form-label">Current photo</span
+                      ><img
+                        id="memberCurrentPhoto"
+                        alt="Current organizer photo"
+                        hidden
+                        style="width: 88px; height: 88px; object-fit: cover"
+                      />
+                    </div>
+                    <div>
+                      <span class="form-label">Selected preview</span
+                      ><img
+                        id="memberPhotoPreview"
+                        alt="Selected organizer photo preview"
+                        hidden
+                        style="width: 88px; height: 88px; object-fit: cover"
+                      />
+                    </div>
                   </div>
-                  <button class="tiny-btn" id="removeMemberPhoto" type="button" hidden style="margin-top:8px">Remove Photo</button>
-                  <button class="tiny-btn" id="cancelPhotoSelection" type="button" hidden style="margin-top:8px">Cancel selection</button>
-                  <progress id="photoProgress" max="100" value="0" hidden style="display:block;width:min(100%,320px);margin-top:8px"></progress>
-                  <div id="photoStatus" class="form-status" role="status" aria-live="polite">Photos use authenticated, signed Cloudinary uploads. Choose a file to upload or replace this organizer photo.</div>
+                  <button
+                    class="tiny-btn"
+                    id="removeMemberPhoto"
+                    type="button"
+                    hidden
+                    style="margin-top: 8px"
+                  >
+                    Remove Photo
+                  </button>
+                  <button
+                    class="tiny-btn"
+                    id="cancelPhotoSelection"
+                    type="button"
+                    hidden
+                    style="margin-top: 8px"
+                  >
+                    Cancel selection
+                  </button>
+                  <progress
+                    id="photoProgress"
+                    max="100"
+                    value="0"
+                    hidden
+                    style="
+                      display: block;
+                      width: min(100%, 320px);
+                      margin-top: 8px;
+                    "
+                  ></progress>
+                  <div
+                    id="photoStatus"
+                    class="form-status"
+                    role="status"
+                    aria-live="polite"
+                  >
+                    Photos use authenticated, signed Cloudinary uploads. Choose
+                    a file to upload or replace this organizer photo.
+                  </div>
                 </div>
               </div>
               <div class="admin-row" style="margin-top: 10px">
@@ -2430,7 +2528,14 @@
               >
                 Save organizer
               </button>
-              <button class="tiny-btn" id="cancelMemberEdit" type="button" style="display:none">Cancel edit</button>
+              <button
+                class="tiny-btn"
+                id="cancelMemberEdit"
+                type="button"
+                style="display: none"
+              >
+                Cancel edit
+              </button>
               <div class="admin-list" id="adminMembers"></div>
             </div>
 
@@ -2459,7 +2564,7 @@
         <div class="footer-bottom">
           <span>STRATEGY MEETS PASSION. PLAY CLEAN. PLAY LOUD.</span>
           <span
-            >Â© <span id="footerYear">2026</span> CLUTCH / ALL SYSTEMS
+            >© <span id="footerYear">2026</span> CLUTCH / ALL SYSTEMS
             ONLINE</span
           >
         </div>
@@ -2475,7 +2580,7 @@
       <div class="modal-box">
         <div class="modal-head">
           <h3>Watch trailer</h3>
-          <button class="close" id="closeTrailer">Ã—</button>
+          <button class="close" id="closeTrailer">×</button>
         </div>
         <div
           style="
@@ -2736,30 +2841,62 @@
       }
       function formatDate(value) {
         const date = toDate(value);
-        return date ? new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short" }).format(date) : "Date to be announced";
+        return date
+          ? new Intl.DateTimeFormat(undefined, {
+              dateStyle: "medium",
+              timeStyle: "short",
+            }).format(date)
+          : "Date to be announced";
       }
       function eventDate() {
-        return toDate(state.settings.eventDate) || toDate(CONFIG.EVENT_DATE_FALLBACK);
+        return (
+          toDate(state.settings.eventDate) || toDate(CONFIG.EVENT_DATE_FALLBACK)
+        );
       }
       function updateEventDisplay() {
         const date = eventDate();
         $("#heroYear").textContent = date ? date.getFullYear() : "2026";
-        $("#countdownDate").textContent = date ? formatDate(date) : "Event date to be announced";
-        const remaining = date ? Math.max(0, date.getTime() - Date.now()) : null;
-        const parts = remaining === null ? ["--", "--", "--", "--"] : [Math.floor(remaining / 86400000), Math.floor(remaining / 3600000) % 24, Math.floor(remaining / 60000) % 60, Math.floor(remaining / 1000) % 60];
-        ["#countDays", "#countHours", "#countMinutes", "#countSeconds"].forEach((id, i) => $(id).textContent = String(parts[i]).padStart(2, "0"));
+        $("#countdownDate").textContent = date
+          ? formatDate(date)
+          : "Event date to be announced";
+        const remaining = date
+          ? Math.max(0, date.getTime() - Date.now())
+          : null;
+        const parts =
+          remaining === null
+            ? ["--", "--", "--", "--"]
+            : [
+                Math.floor(remaining / 86400000),
+                Math.floor(remaining / 3600000) % 24,
+                Math.floor(remaining / 60000) % 60,
+                Math.floor(remaining / 1000) % 60,
+              ];
+        ["#countDays", "#countHours", "#countMinutes", "#countSeconds"].forEach(
+          (id, i) => ($(id).textContent = String(parts[i]).padStart(2, "0")),
+        );
         const timeline = $("#timeline");
-        if (timeline && date) timeline.querySelectorAll(".date").forEach((node) => node.textContent = formatDate(date));
+        if (timeline && date)
+          timeline
+            .querySelectorAll(".date")
+            .forEach((node) => (node.textContent = formatDate(date)));
       }
       function clearNewsForm() {
         window.__newsEdit = null;
         $("#saveNews").textContent = "Publish news";
         $("#cancelNewsEdit").style.display = "none";
-        $("#newsTitle").value = $("#newsBody").value = $("#newsDate").value = $("#newsTag").value = "";
+        $("#newsTitle").value =
+          $("#newsBody").value =
+          $("#newsDate").value =
+          $("#newsTag").value =
+            "";
       }
       function safeUrl(value) {
-        try { const url = new URL(String(value || ""), location.href); return ["https:", "http:"].includes(url.protocol) ? url.href : ""; }
-        catch { return ""; }
+        try {
+          const url = new URL(String(value || ""), location.href);
+          return ["https:", "http:"].includes(url.protocol) ? url.href : "";
+        } catch {
+          return "";
+        }
       }
       function safePhotoUrl(value) {
         const url = safeUrl(value);
@@ -2768,18 +2905,37 @@
           const parsed = new URL(url);
           const host = parsed.hostname.toLowerCase();
           const isLegacyBlob = host.endsWith(".public.blob.vercel-storage.com");
-          const isCloudinary = host === "res.cloudinary.com" && /^\/[^/]+\/image\/upload\//.test(parsed.pathname);
+          const isCloudinary =
+            host === "res.cloudinary.com" &&
+            /^\/[^/]+\/image\/upload\//.test(parsed.pathname);
           return isLegacyBlob || isCloudinary ? url : "";
-        } catch { return ""; }
+        } catch {
+          return "";
+        }
       }
       function sortNews(items) {
-        const dateValue = (item) => toDate(item.date)?.getTime() || toDate(item.createdAt)?.getTime() || 0;
+        const dateValue = (item) =>
+          toDate(item.date)?.getTime() ||
+          toDate(item.createdAt)?.getTime() ||
+          0;
         return [...items].sort((a, b) => dateValue(b) - dateValue(a));
       }
       const FALLBACK_NEWS = [
-        { tag: "LIVE", title: "REGISTRATION IS OPEN", body: "Squads can submit their details from the registration terminal. Final slots are subject to organizer confirmation." },
-        { tag: "SIGNAL", title: "FOUR ARENAS ONLINE", body: "BGMI, Valorant, Minecraft and Chess are live on the CLUTCH broadcast grid." },
-        { tag: "CONTROL", title: "SCOREBOARD SYNC", body: "Official points will appear here instantly as the control tower updates Firestore." },
+        {
+          tag: "LIVE",
+          title: "REGISTRATION IS OPEN",
+          body: "Squads can submit their details from the registration terminal. Final slots are subject to organizer confirmation.",
+        },
+        {
+          tag: "SIGNAL",
+          title: "FOUR ARENAS ONLINE",
+          body: "BGMI, Valorant, Minecraft and Chess are live on the CLUTCH broadcast grid.",
+        },
+        {
+          tag: "CONTROL",
+          title: "SCOREBOARD SYNC",
+          body: "Official points will appear here instantly as the control tower updates Firestore.",
+        },
       ];
 
       function roundPoints(value) {
@@ -2847,7 +3003,7 @@
             (a, b) => (Number(b.points) || 0) - (Number(a.points) || 0),
           );
           const top = rows[0];
-          return `<div class="ticker-item"><span class="live-dot"></span>${GAMES[k].label.toUpperCase()} / ${esc(top?.team || "OPEN SLOT")} â€” ${roundPoints(top?.points)} PTS</div>`;
+          return `<div class="ticker-item"><span class="live-dot"></span>${GAMES[k].label.toUpperCase()} / ${esc(top?.team || "OPEN SLOT")} — ${roundPoints(top?.points)} PTS</div>`;
         });
         $("#tickerTrack").innerHTML = items.concat(items).join("");
       }
@@ -2865,12 +3021,14 @@
 
       function renderAdminNews() {
         const items = sortNews(state.news);
-        $("#adminNews").innerHTML = items.length ? items
-          .map(
-            (n) =>
-              `<div class="admin-list-item"><span><b>${esc(n.title)}</b> Â· ${esc(n.date || "")}</span><span><button class="tiny-btn" data-edit-news="${esc(n.id)}">Edit</button> <button class="danger-btn" data-del-news="${esc(n.id)}">Delete</button></span></div>`,
-          )
-          .join("") : `<div class="muted mono" style="font-size:10px">No news published yet.</div>`;
+        $("#adminNews").innerHTML = items.length
+          ? items
+              .map(
+                (n) =>
+                  `<div class="admin-list-item"><span><b>${esc(n.title)}</b> · ${esc(n.date || "")}</span><span><button class="tiny-btn" data-edit-news="${esc(n.id)}">Edit</button> <button class="danger-btn" data-del-news="${esc(n.id)}">Delete</button></span></div>`,
+              )
+              .join("")
+          : `<div class="muted mono" style="font-size:10px">No news published yet.</div>`;
         $$("[data-edit-news]").forEach(
           (b) =>
             (b.onclick = () => {
@@ -2888,10 +3046,19 @@
         $$("[data-del-news]").forEach(
           (b) =>
             (b.onclick = async () => {
-              if (!confirm("Delete this news item? This cannot be undone.")) return;
-              if (!firebaseReady || !adminAuthed()) { toast("Sign in to Firebase before deleting news."); return; }
-              try { await deleteDoc(doc(db, "news", b.dataset.delNews)); toast("News deleted"); }
-              catch (error) { console.error(error); toast("Could not delete news"); }
+              if (!confirm("Delete this news item? This cannot be undone."))
+                return;
+              if (!firebaseReady || !adminAuthed()) {
+                toast("Sign in to Firebase before deleting news.");
+                return;
+              }
+              try {
+                await deleteDoc(doc(db, "news", b.dataset.delNews));
+                toast("News deleted");
+              } catch (error) {
+                console.error(error);
+                toast("Could not delete news");
+              }
             }),
         );
       }
@@ -2955,9 +3122,9 @@
             const linkedin = safeUrl(m.linkedin);
             return `
       <article class="team-card">
-        <div class="portrait${photo ? " has-photo" : ""}">${photo ? `<img src="${esc(photo)}" alt="Portrait of ${esc(m.name || "organizer")}" onerror="this.remove();this.parentElement.classList.remove('has-photo')">` : `<span aria-hidden="true">${esc((m.name || "C").slice(0,1).toUpperCase())}</span>`} </div>
+        <div class="portrait${photo ? " has-photo" : ""}">${photo ? `<img src="${esc(photo)}" alt="Portrait of ${esc(m.name || "organizer")}" onerror="this.remove();this.parentElement.classList.remove('has-photo')">` : `<span aria-hidden="true">${esc((m.name || "C").slice(0, 1).toUpperCase())}</span>`} </div>
         <div class="team-info"><div class="team-role">${esc(m.role || "Organizer")}</div><div class="team-name">${esc(m.name)}</div>
-          <div class="team-socials">${instagram ? `<a href="${esc(instagram)}" target="_blank" rel="noopener">IG â†—</a>` : ""}${linkedin ? `<a href="${esc(linkedin)}" target="_blank" rel="noopener">LI â†—</a>` : ""}</div>
+          <div class="team-socials">${instagram ? `<a href="${esc(instagram)}" target="_blank" rel="noopener">IG ↗</a>` : ""}${linkedin ? `<a href="${esc(linkedin)}" target="_blank" rel="noopener">LI ↗</a>` : ""}</div>
         </div>
       </article>`;
           })
@@ -2970,12 +3137,14 @@
           ["Instagram", s.instagram],
           ["Discord / WhatsApp", s.discord],
           ["YouTube", s.youtube],
-        ].map(([name, url]) => [name, safeUrl(url)]).filter((x) => x[1]);
+        ]
+          .map(([name, url]) => [name, safeUrl(url)])
+          .filter((x) => x[1]);
         $("#footerSocials").innerHTML = links.length
           ? links
               .map(
                 ([n, u]) =>
-                  `<a class="social" href="${esc(u)}" target="_blank" rel="noopener">${n} â†—</a>`,
+                  `<a class="social" href="${esc(u)}" target="_blank" rel="noopener">${n} ↗</a>`,
               )
               .join("")
           : `<span class="mono muted" style="font-size:9px">SOCIAL LINKS WILL APPEAR HERE</span>`;
@@ -3022,7 +3191,7 @@
         } catch (err) {
           console.error(err);
           firebaseReady = false;
-          toast("Demo mode Â· add Firebase config");
+          toast("Demo mode · add Firebase config");
         }
       }
 
@@ -3167,7 +3336,10 @@
       function adminClose() {
         $("#adminGate").style.display = "block";
         $("#adminPanel").classList.remove("show");
-        if (unsubscribeRegistrations) { unsubscribeRegistrations(); unsubscribeRegistrations = null; }
+        if (unsubscribeRegistrations) {
+          unsubscribeRegistrations();
+          unsubscribeRegistrations = null;
+        }
         state.registrations = [];
         window.__newsEdit = null;
         $("#newsTitle").value = "";
@@ -3178,7 +3350,9 @@
       }
       function adminAuthed() {
         const user = auth?.currentUser;
-        return Boolean(adminSessionApproved && user && user.uid === CONFIG.ADMIN_UID);
+        return Boolean(
+          adminSessionApproved && user && user.uid === CONFIG.ADMIN_UID,
+        );
       }
 
       function populateAdminSettings() {
@@ -3199,7 +3373,7 @@
           rows
             .map(
               (r) =>
-                `<div class="admin-list-item"><span><b>${esc(r.team)}</b> Â· ${roundPoints(r.points)} pts</span><span style="display:flex;gap:8px;align-items:center"><button class="tiny-btn" data-edit-score="${esc(r.team)}" data-edit-points="${roundPoints(r.points)}">Edit</button><button class="danger-btn" data-del-score="${esc(r.team)}">Remove</button></span></div>`,
+                `<div class="admin-list-item"><span><b>${esc(r.team)}</b> · ${roundPoints(r.points)} pts</span><span style="display:flex;gap:8px;align-items:center"><button class="tiny-btn" data-edit-score="${esc(r.team)}" data-edit-points="${roundPoints(r.points)}">Edit</button><button class="danger-btn" data-del-score="${esc(r.team)}">Remove</button></span></div>`,
             )
             .join("") ||
           `<div class="muted mono" style="font-size:10px">NO ROWS.</div>`;
@@ -3245,7 +3419,8 @@
       }
 
       async function saveScores(k, rows) {
-        if (!firebaseReady || !adminAuthed()) throw new Error("Sign in to Firebase before saving scores.");
+        if (!firebaseReady || !adminAuthed())
+          throw new Error("Sign in to Firebase before saving scores.");
         rows.sort((a, b) => (Number(b.points) || 0) - (Number(a.points) || 0));
         await setDoc(
           doc(db, "scores", k),
@@ -3259,33 +3434,37 @@
         $("#adminMembers").innerHTML = state.organizers
           .map(
             (m) =>
-              `<div class="admin-list-item"><span><b>${esc(m.name)}</b> Â· ${esc(m.role)}</span><span><button class="tiny-btn" data-edit-member="${esc(m.id)}">Edit</button> <button class="danger-btn" data-del-member="${esc(m.id)}">Remove</button></span></div>`,
+              `<div class="admin-list-item"><span><b>${esc(m.name)}</b> · ${esc(m.role)}</span><span><button class="tiny-btn" data-edit-member="${esc(m.id)}">Edit</button> <button class="danger-btn" data-del-member="${esc(m.id)}">Remove</button></span></div>`,
           )
           .join("");
-        $$("#adminMembers [data-edit-member]").forEach((btn) => btn.addEventListener("click", () => {
-          const member = state.organizers.find((m) => m.id === btn.dataset.editMember);
-          if (!member) return;
-          editingMemberId = member.id;
-          $("#memberName").value = member.name || "";
-          $("#memberRole").value = member.role || "";
-          $("#memberPhoto").value = member.photo || "";
-          $("#memberInsta").value = member.instagram || "";
-          $("#memberLinkedin").value = member.linkedin || "";
-          $("#memberPhotoFile").value = "";
-          const photoUrl = safePhotoUrl(member.photo);
-          const currentPhoto = $("#memberCurrentPhoto");
-          if (photoUrl) currentPhoto.src = photoUrl;
-          else currentPhoto.removeAttribute("src");
-          currentPhoto.hidden = !photoUrl;
-          $("#removeMemberPhoto").hidden = !photoUrl;
-          const preview = $("#memberPhotoPreview");
-          preview.removeAttribute("src");
-          preview.hidden = true;
-          $("#cancelPhotoSelection").hidden = true;
-          $("#addMember").textContent = "Update organizer";
-          $("#cancelMemberEdit").style.display = "inline-flex";
-          $("#memberName").focus();
-        }));
+        $$("#adminMembers [data-edit-member]").forEach((btn) =>
+          btn.addEventListener("click", () => {
+            const member = state.organizers.find(
+              (m) => m.id === btn.dataset.editMember,
+            );
+            if (!member) return;
+            editingMemberId = member.id;
+            $("#memberName").value = member.name || "";
+            $("#memberRole").value = member.role || "";
+            $("#memberPhoto").value = member.photo || "";
+            $("#memberInsta").value = member.instagram || "";
+            $("#memberLinkedin").value = member.linkedin || "";
+            $("#memberPhotoFile").value = "";
+            const photoUrl = safePhotoUrl(member.photo);
+            const currentPhoto = $("#memberCurrentPhoto");
+            if (photoUrl) currentPhoto.src = photoUrl;
+            else currentPhoto.removeAttribute("src");
+            currentPhoto.hidden = !photoUrl;
+            $("#removeMemberPhoto").hidden = !photoUrl;
+            const preview = $("#memberPhotoPreview");
+            preview.removeAttribute("src");
+            preview.hidden = true;
+            $("#cancelPhotoSelection").hidden = true;
+            $("#addMember").textContent = "Update organizer";
+            $("#cancelMemberEdit").style.display = "inline-flex";
+            $("#memberName").focus();
+          }),
+        );
         $$("#adminMembers [data-del-member]").forEach((btn) =>
           btn.addEventListener("click", async () => {
             if (!firebaseReady || !adminAuthed()) return;
@@ -3293,9 +3472,20 @@
             try {
               const memberId = btn.dataset.delMember;
               const idToken = await auth.currentUser.getIdToken();
-              const result = await requestPhotoApi("/api/team-photo/remove", { action: "deleteOrganizer", memberId }, idToken);
-              toast(result.cleanupFailed ? "Organizer removed; its old image may need cleanup." : "Organizer removed");
-            } catch (error) { console.error(error); toast("Could not remove organizer"); }
+              const result = await requestPhotoApi(
+                "/api/team-photo/remove",
+                { action: "deleteOrganizer", memberId },
+                idToken,
+              );
+              toast(
+                result.cleanupFailed
+                  ? "Organizer removed; its old image may need cleanup."
+                  : "Organizer removed",
+              );
+            } catch (error) {
+              console.error(error);
+              toast("Could not remove organizer");
+            }
           }),
         );
       }
@@ -3305,7 +3495,7 @@
           state.registrations
             .map(
               (r) =>
-                `<div class="admin-list-item"><span><b>${esc(r.teamName)}</b> Â· ${esc(GAMES[r.game]?.label || r.game)} Â· ${esc(r.captain || "")}</span><button class="danger-btn" data-del-reg="${esc(r.id)}">Delete</button></div>`,
+                `<div class="admin-list-item"><span><b>${esc(r.teamName)}</b> · ${esc(GAMES[r.game]?.label || r.game)} · ${esc(r.captain || "")}</span><button class="danger-btn" data-del-reg="${esc(r.id)}">Delete</button></div>`,
             )
             .join("") ||
           `<div class="muted mono" style="font-size:10px">NO REGISTRATIONS.</div>`;
@@ -3318,13 +3508,18 @@
               batch.delete(doc(db, "publicTeams", btn.dataset.delReg));
               await batch.commit();
               toast("Registration deleted");
-            } catch (error) { console.error(error); toast("Could not delete registration"); }
+            } catch (error) {
+              console.error(error);
+              toast("Could not delete registration");
+            }
           }),
         );
       }
 
       async function seedDemo() {
-        toast("Demo seeding is disabled for the configured Firebase project to protect production data.");
+        toast(
+          "Demo seeding is disabled for the configured Firebase project to protect production data.",
+        );
       }
 
       /* UI EVENTS */
@@ -3343,7 +3538,7 @@
         const form = e.currentTarget;
         const status = $("#regStatus");
         const data = Object.fromEntries(new FormData(form).entries());
-        status.textContent = "TRANSMITTINGâ€¦";
+        status.textContent = "TRANSMITTING…";
         status.className = "form-status";
         try {
           await submitRegistration(data);
@@ -3393,11 +3588,17 @@
         try {
           if (!auth) throw new Error("Firebase Authentication is unavailable.");
           $("#adminLogin").disabled = true;
-          $("#adminLogin").textContent = "Authenticatingâ€¦";
-          const credential = await signInWithEmailAndPassword(auth, CONFIG.ADMIN_EMAIL, password);
+          $("#adminLogin").textContent = "Authenticating…";
+          const credential = await signInWithEmailAndPassword(
+            auth,
+            CONFIG.ADMIN_EMAIL,
+            password,
+          );
           if (credential.user.uid !== CONFIG.ADMIN_UID) {
             await signOut(auth);
-            throw new Error("This account is not authorized for the admin console.");
+            throw new Error(
+              "This account is not authorized for the admin console.",
+            );
           }
           adminSessionApproved = true;
           if (auth.currentUser?.uid === CONFIG.ADMIN_UID) {
@@ -3405,19 +3606,27 @@
             subscribeAdminRegistrations();
           }
           $("#adminPassword").value = "";
-          $("#adminStatus").textContent = "Access verified. Loading consoleâ€¦";
+          $("#adminStatus").textContent = "Access verified. Loading console…";
           $("#adminStatus").className = "form-status ok";
         } catch (error) {
           console.error("Admin login error:", error);
-          $("#adminStatus").textContent = error.code === "auth/invalid-credential" || error.code === "auth/wrong-password" || error.code === "auth/user-not-found" ? "Incorrect email or password." : (error.message || "Could not verify admin access. Try again.");
+          $("#adminStatus").textContent =
+            error.code === "auth/invalid-credential" ||
+            error.code === "auth/wrong-password" ||
+            error.code === "auth/user-not-found"
+              ? "Incorrect email or password."
+              : error.message || "Could not verify admin access. Try again.";
           $("#adminStatus").className = "form-status err";
         } finally {
           $("#adminLogin").disabled = false;
-          $("#adminLogin").textContent = "Unlock console â†—";
+          $("#adminLogin").textContent = "Unlock console ↗";
         }
       });
       $("#adminPassword").addEventListener("keydown", (event) => {
-        if (event.key === "Enter") { event.preventDefault(); $("#adminLogin").click(); }
+        if (event.key === "Enter") {
+          event.preventDefault();
+          $("#adminLogin").click();
+        }
       });
 
       $("#adminLogout").addEventListener("click", async () => {
@@ -3455,31 +3664,57 @@
           status.className = "form-status err";
           return;
         }
-        if (!firebaseReady || !adminAuthed()) { status.textContent = "Sign in to Firebase to save the event date."; status.className = "form-status err"; return; }
+        if (!firebaseReady || !adminAuthed()) {
+          status.textContent = "Sign in to Firebase to save the event date.";
+          status.className = "form-status err";
+          return;
+        }
         const button = $("#saveEventDate");
         button.disabled = true;
-        button.textContent = "Savingâ€¦";
+        button.textContent = "Saving…";
         try {
-          await setDoc(doc(db, "settings", "global"), { eventDate: date.toISOString() }, { merge: true });
-          status.textContent = "Event date saved."; status.className = "form-status ok";
+          await setDoc(
+            doc(db, "settings", "global"),
+            { eventDate: date.toISOString() },
+            { merge: true },
+          );
+          status.textContent = "Event date saved.";
+          status.className = "form-status ok";
         } catch (e) {
-          console.error(e); status.textContent = "Could not save event date. Check your connection and permissions."; status.className = "form-status err";
-        } finally { button.disabled = false; button.textContent = "Save event date"; }
+          console.error(e);
+          status.textContent =
+            "Could not save event date. Check your connection and permissions.";
+          status.className = "form-status err";
+        } finally {
+          button.disabled = false;
+          button.textContent = "Save event date";
+        }
       });
 
       $("#saveSettings").addEventListener("click", async () => {
         const button = $("#saveSettings");
         button.disabled = true;
         try {
-          if (!firebaseReady || !adminAuthed()) throw new Error("Sign in to Firebase before saving settings.");
-          await setDoc(doc(db, "settings", "global"), { socials: {
-            instagram: $("#setInstagram").value.trim(),
-            discord: $("#setDiscord").value.trim(),
-            youtube: $("#setYoutube").value.trim(),
-          } }, { merge: true });
+          if (!firebaseReady || !adminAuthed())
+            throw new Error("Sign in to Firebase before saving settings.");
+          await setDoc(
+            doc(db, "settings", "global"),
+            {
+              socials: {
+                instagram: $("#setInstagram").value.trim(),
+                discord: $("#setDiscord").value.trim(),
+                youtube: $("#setYoutube").value.trim(),
+              },
+            },
+            { merge: true },
+          );
           toast("Social links saved");
-        } catch (e) { console.error(e); toast(e.message || "Could not save social links"); }
-        finally { button.disabled = false; }
+        } catch (e) {
+          console.error(e);
+          toast(e.message || "Could not save social links");
+        } finally {
+          button.disabled = false;
+        }
       });
 
       $("#addScore").addEventListener("click", async () => {
@@ -3487,7 +3722,15 @@
           team = $("#scoreTeam").value.trim(),
           rawPoints = $("#scorePoints").value,
           points = Number(rawPoints);
-        if (!team || rawPoints === "" || !Number.isFinite(points) || points < 0) { toast("Enter a team and a valid non-negative score."); return; }
+        if (
+          !team ||
+          rawPoints === "" ||
+          !Number.isFinite(points) ||
+          points < 0
+        ) {
+          toast("Enter a team and a valid non-negative score.");
+          return;
+        }
         // If an existing row is being edited, remove the old row first. This also
         // permits changing the team name while keeping the same edit workflow.
         const oldTeam = editingScoreTeam;
@@ -3495,52 +3738,80 @@
         if (oldTeam) rows = rows.filter((r) => slug(r.team) !== slug(oldTeam));
         rows = rows.filter((r) => slug(r.team) !== slug(team));
         rows.push({ team, points });
-        const button = $("#addScore"); button.disabled = true;
+        const button = $("#addScore");
+        button.disabled = true;
         try {
           await saveScores(k, rows);
           cancelScoreEdit();
         } catch (e) {
-          console.error(e); toast("Could not update scores");
-        } finally { button.disabled = false; }
+          console.error(e);
+          toast("Could not update scores");
+        } finally {
+          button.disabled = false;
+        }
       });
 
       $("#memberPhotoFile").addEventListener("change", () => {
-        const file = $("#memberPhotoFile").files[0], preview = $("#memberPhotoPreview");
-        if (!file) { preview.hidden = true; $("#cancelPhotoSelection").hidden = true; return; }
-        if (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > 4 * 1024 * 1024) {
+        const file = $("#memberPhotoFile").files[0],
+          preview = $("#memberPhotoPreview");
+        if (!file) {
+          preview.hidden = true;
+          $("#cancelPhotoSelection").hidden = true;
+          return;
+        }
+        if (
+          !["image/jpeg", "image/png", "image/webp"].includes(file.type) ||
+          file.size > 4 * 1024 * 1024
+        ) {
           $("#memberPhotoFile").value = "";
           preview.hidden = true;
           $("#cancelPhotoSelection").hidden = true;
-          $("#photoStatus").textContent = "Choose a JPEG, PNG, or WebP image no larger than 4 MB.";
+          $("#photoStatus").textContent =
+            "Choose a JPEG, PNG, or WebP image no larger than 4 MB.";
           $("#photoStatus").className = "form-status err";
           toast("Choose a JPEG, PNG, or WebP image no larger than 4 MB.");
           return;
         }
-        if (preview.dataset.objectUrl) URL.revokeObjectURL(preview.dataset.objectUrl);
+        if (preview.dataset.objectUrl)
+          URL.revokeObjectURL(preview.dataset.objectUrl);
         preview.dataset.objectUrl = URL.createObjectURL(file);
         preview.src = preview.dataset.objectUrl;
         preview.hidden = false;
         $("#cancelPhotoSelection").hidden = false;
-        $("#addMember").textContent = editingMemberId ? "Replace Photo & Save Organizer" : "Upload Photo & Save Organizer";
+        $("#addMember").textContent = editingMemberId
+          ? "Replace Photo & Save Organizer"
+          : "Upload Photo & Save Organizer";
       });
 
       async function requestPhotoApi(path, payload, idToken) {
         const response = await fetch(path, {
           method: "POST",
-          headers: { Authorization: "Bearer " + idToken, "Content-Type": "application/json" },
+          headers: {
+            Authorization: "Bearer " + idToken,
+            "Content-Type": "application/json",
+          },
           body: JSON.stringify(payload),
         });
         const result = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(result.error || `Photo request failed (${response.status}).`);
+        if (!response.ok)
+          throw new Error(
+            result.error || `Photo request failed (${response.status}).`,
+          );
         return result;
       }
 
       async function uploadOrganizerPhoto(memberId, file, member) {
         if (!auth?.currentUser || !adminAuthed()) {
-          throw new Error("Sign in with the authorized admin account to manage team photos.");
+          throw new Error(
+            "Sign in with the authorized admin account to manage team photos.",
+          );
         }
         const idToken = await auth.currentUser.getIdToken();
-        const signed = await requestPhotoApi("/api/team-photo/signature", { memberId }, idToken);
+        const signed = await requestPhotoApi(
+          "/api/team-photo/signature",
+          { memberId },
+          idToken,
+        );
         const uploadBody = new FormData();
         uploadBody.append("file", file, file.name);
         uploadBody.append("api_key", signed.apiKey);
@@ -3552,41 +3823,75 @@
         uploadBody.append("signature", signed.signature);
         const uploaded = await new Promise((resolve, reject) => {
           const request = new XMLHttpRequest();
-          request.open("POST", `https://api.cloudinary.com/v1_1/${encodeURIComponent(signed.cloudName)}/image/upload`);
+          request.open(
+            "POST",
+            `https://api.cloudinary.com/v1_1/${encodeURIComponent(signed.cloudName)}/image/upload`,
+          );
           request.upload.addEventListener("progress", (event) => {
             const progress = $("#photoProgress");
             progress.hidden = false;
-            if (event.lengthComputable) progress.value = Math.round((event.loaded / event.total) * 100);
+            if (event.lengthComputable)
+              progress.value = Math.round((event.loaded / event.total) * 100);
           });
           request.addEventListener("load", () => {
             let result = {};
-            try { result = JSON.parse(request.responseText); } catch {}
+            try {
+              result = JSON.parse(request.responseText);
+            } catch {}
             if (request.status < 200 || request.status >= 300) {
-              reject(new Error(result.error?.message || "Cloudinary rejected the upload. Check the selected image and try again."));
+              reject(
+                new Error(
+                  result.error?.message ||
+                    "Cloudinary rejected the upload. Check the selected image and try again.",
+                ),
+              );
               return;
             }
             resolve(result);
           });
-          request.addEventListener("error", () => reject(new Error("Cloudinary upload failed. Check your connection and retry.")));
-          request.addEventListener("abort", () => reject(new Error("Upload was canceled. The existing organizer photo was left unchanged.")));
+          request.addEventListener("error", () =>
+            reject(
+              new Error(
+                "Cloudinary upload failed. Check your connection and retry.",
+              ),
+            ),
+          );
+          request.addEventListener("abort", () =>
+            reject(
+              new Error(
+                "Upload was canceled. The existing organizer photo was left unchanged.",
+              ),
+            ),
+          );
           request.send(uploadBody);
         });
-        return await requestPhotoApi("/api/team-photo/commit", {
-          memberId,
-          public_id: uploaded.public_id,
-          secure_url: uploaded.secure_url,
-          ...member,
-        }, idToken);
+        return await requestPhotoApi(
+          "/api/team-photo/commit",
+          {
+            memberId,
+            public_id: uploaded.public_id,
+            secure_url: uploaded.secure_url,
+            ...member,
+          },
+          idToken,
+        );
       }
 
       function resetMemberForm() {
         editingMemberId = null;
-        ["memberName", "memberRole", "memberPhoto", "memberInsta", "memberLinkedin"].forEach((id) => $("#" + id).value = "");
+        [
+          "memberName",
+          "memberRole",
+          "memberPhoto",
+          "memberInsta",
+          "memberLinkedin",
+        ].forEach((id) => ($("#" + id).value = ""));
         $("#memberPhotoFile").value = "";
         $("#photoProgress").hidden = true;
         $("#photoProgress").value = 0;
         const preview = $("#memberPhotoPreview");
-        if (preview.dataset.objectUrl) URL.revokeObjectURL(preview.dataset.objectUrl);
+        if (preview.dataset.objectUrl)
+          URL.revokeObjectURL(preview.dataset.objectUrl);
         delete preview.dataset.objectUrl;
         preview.removeAttribute("src");
         preview.hidden = true;
@@ -3595,7 +3900,8 @@
         currentPhoto.hidden = true;
         $("#removeMemberPhoto").hidden = true;
         $("#cancelPhotoSelection").hidden = true;
-        $("#photoStatus").textContent = "Photos use authenticated, signed Cloudinary uploads. Choose a file to upload or replace this organizer photo.";
+        $("#photoStatus").textContent =
+          "Photos use authenticated, signed Cloudinary uploads. Choose a file to upload or replace this organizer photo.";
         $("#photoStatus").className = "form-status";
         $("#addMember").textContent = "Save organizer";
         $("#cancelMemberEdit").style.display = "none";
@@ -3603,13 +3909,16 @@
 
       $("#cancelPhotoSelection").addEventListener("click", () => {
         const preview = $("#memberPhotoPreview");
-        if (preview.dataset.objectUrl) URL.revokeObjectURL(preview.dataset.objectUrl);
+        if (preview.dataset.objectUrl)
+          URL.revokeObjectURL(preview.dataset.objectUrl);
         delete preview.dataset.objectUrl;
         preview.removeAttribute("src");
         preview.hidden = true;
         $("#memberPhotoFile").value = "";
         $("#cancelPhotoSelection").hidden = true;
-        $("#addMember").textContent = editingMemberId ? "Update organizer" : "Save organizer";
+        $("#addMember").textContent = editingMemberId
+          ? "Update organizer"
+          : "Save organizer";
       });
 
       $("#removeMemberPhoto").addEventListener("click", async () => {
@@ -3621,22 +3930,33 @@
         status.className = "form-status";
         try {
           const idToken = await auth.currentUser.getIdToken();
-          const result = await requestPhotoApi("/api/team-photo/remove", {
-            action: "removePhoto",
-            memberId: editingMemberId,
-            name: $("#memberName").value.trim(),
-            role: $("#memberRole").value.trim(),
-            instagram: $("#memberInsta").value.trim(),
-            linkedin: $("#memberLinkedin").value.trim(),
-          }, idToken);
+          const result = await requestPhotoApi(
+            "/api/team-photo/remove",
+            {
+              action: "removePhoto",
+              memberId: editingMemberId,
+              name: $("#memberName").value.trim(),
+              role: $("#memberRole").value.trim(),
+              instagram: $("#memberInsta").value.trim(),
+              linkedin: $("#memberLinkedin").value.trim(),
+            },
+            idToken,
+          );
           $("#memberPhoto").value = "";
           $("#memberCurrentPhoto").removeAttribute("src");
           $("#memberCurrentPhoto").hidden = true;
           button.hidden = true;
-          status.textContent = result.cleanupFailed ? "Photo removed from the profile, but the old managed image could not be deleted." : "Organizer photo removed.";
-          status.className = result.cleanupFailed ? "form-status err" : "form-status ok";
+          status.textContent = result.cleanupFailed
+            ? "Photo removed from the profile, but the old managed image could not be deleted."
+            : "Organizer photo removed.";
+          status.className = result.cleanupFailed
+            ? "form-status err"
+            : "form-status ok";
         } catch (error) {
-          status.textContent = error instanceof Error ? error.message : "Could not remove the organizer photo.";
+          status.textContent =
+            error instanceof Error
+              ? error.message
+              : "Could not remove the organizer photo.";
           status.className = "form-status err";
         } finally {
           button.disabled = false;
@@ -3652,11 +3972,21 @@
           instagram: $("#memberInsta").value.trim(),
           linkedin: $("#memberLinkedin").value.trim(),
         };
-        if (!member.name || !member.role) { toast("Enter an organizer name and role."); return; }
-        if (!firebaseReady || !adminAuthed()) { toast("Sign in to Firebase before managing organizers."); return; }
+        if (!member.name || !member.role) {
+          toast("Enter an organizer name and role.");
+          return;
+        }
+        if (!firebaseReady || !adminAuthed()) {
+          toast("Sign in to Firebase before managing organizers.");
+          return;
+        }
 
         const file = $("#memberPhotoFile").files[0];
-        if (file && (!["image/jpeg", "image/png", "image/webp"].includes(file.type) || file.size > 4 * 1024 * 1024)) {
+        if (
+          file &&
+          (!["image/jpeg", "image/png", "image/webp"].includes(file.type) ||
+            file.size > 4 * 1024 * 1024)
+        ) {
           toast("Choose a JPG, PNG, or WebP image no larger than 4 MB.");
           return;
         }
@@ -3672,7 +4002,7 @@
         $("#removeMemberPhoto").disabled = true;
         $("#photoProgress").hidden = !file;
         $("#photoProgress").value = 0;
-        button.textContent = file ? "Uploading photoâ€¦" : "Savingâ€¦";
+        button.textContent = file ? "Uploading photo…" : "Saving…";
         photoStatus.hidden = false;
         photoStatus.className = "form-status";
         photoStatus.textContent = file
@@ -3682,7 +4012,8 @@
         try {
           if (file) {
             // Create only the requested new profile first so the server can validate its team/{id} slot.
-            if (!old) await setDoc(doc(db, "team", memberId), member, { merge: true });
+            if (!old)
+              await setDoc(doc(db, "team", memberId), member, { merge: true });
             const result = await uploadOrganizerPhoto(memberId, file, member);
             cleanupFailed = Boolean(result.oldPhotoCleanupFailed);
           } else {
@@ -3694,17 +4025,31 @@
           if (cleanupFailed) {
             photoStatus.hidden = false;
             photoStatus.className = "form-status err";
-            photoStatus.textContent = "Organizer saved, but the previous managed photo could not be deleted.";
+            photoStatus.textContent =
+              "Organizer saved, but the previous managed photo could not be deleted.";
           } else if (file) {
             photoStatus.hidden = false;
             photoStatus.className = "form-status ok";
-            photoStatus.textContent = old ? "Organizer photo replaced and profile saved." : "Organizer created and photo uploaded.";
+            photoStatus.textContent = old
+              ? "Organizer photo replaced and profile saved."
+              : "Organizer created and photo uploaded.";
           }
-          toast(cleanupFailed ? "Organizer saved, but previous photo cleanup failed." : file ? (old ? "Photo replaced" : "Organizer photo uploaded") : old ? "Organizer updated" : "Organizer added");
+          toast(
+            cleanupFailed
+              ? "Organizer saved, but previous photo cleanup failed."
+              : file
+                ? old
+                  ? "Photo replaced"
+                  : "Organizer photo uploaded"
+                : old
+                  ? "Organizer updated"
+                  : "Organizer added",
+          );
         } catch (error) {
-          const message = error instanceof Error
-            ? error.message
-            : "Could not save organizer. The existing record was left unchanged.";
+          const message =
+            error instanceof Error
+              ? error.message
+              : "Could not save organizer. The existing record was left unchanged.";
           photoStatus.hidden = false;
           photoStatus.className = "form-status err";
           photoStatus.textContent = message;
@@ -3716,7 +4061,13 @@
           $("#cancelMemberEdit").disabled = false;
           $("#removeMemberPhoto").disabled = false;
           const hasSelectedPhoto = Boolean($("#memberPhotoFile").files[0]);
-          button.textContent = hasSelectedPhoto ? (editingMemberId ? "Replace Photo & Save Organizer" : "Upload Photo & Save Organizer") : editingMemberId ? "Update organizer" : "Save organizer";
+          button.textContent = hasSelectedPhoto
+            ? editingMemberId
+              ? "Replace Photo & Save Organizer"
+              : "Upload Photo & Save Organizer"
+            : editingMemberId
+              ? "Update organizer"
+              : "Save organizer";
         }
       });
       $("#saveNews").addEventListener("click", async () => {
@@ -3727,14 +4078,26 @@
           tag: $("#newsTag").value.trim(),
         };
         const button = $("#saveNews");
-        if (!item.title || !item.body || !item.date) { toast("Enter a title, description, and publication date."); return; }
-        if (!firebaseReady || !adminAuthed()) { toast("Sign in to Firebase before publishing news."); return; }
+        if (!item.title || !item.body || !item.date) {
+          toast("Enter a title, description, and publication date.");
+          return;
+        }
+        if (!firebaseReady || !adminAuthed()) {
+          toast("Sign in to Firebase before publishing news.");
+          return;
+        }
         const editing = Boolean(window.__newsEdit);
         button.disabled = true;
         try {
-          if (window.__newsEdit) await updateDoc(doc(db, "news", window.__newsEdit), item);
-          else await addDoc(collection(db, "news"), { ...item, createdAt: serverTimestamp() });
-          clearNewsForm(); toast(editing ? "News updated" : "News published");
+          if (window.__newsEdit)
+            await updateDoc(doc(db, "news", window.__newsEdit), item);
+          else
+            await addDoc(collection(db, "news"), {
+              ...item,
+              createdAt: serverTimestamp(),
+            });
+          clearNewsForm();
+          toast(editing ? "News updated" : "News published");
         } catch (error) {
           const operation = editing ? "update" : "create";
           console.error("News write failed", {
@@ -3743,11 +4106,19 @@
             projectId: CONFIG.FIREBASE.projectId,
             errorCode: error?.code || "unknown",
             adminUidMatches: auth?.currentUser?.uid === CONFIG.ADMIN_UID,
-            fieldNames: [...Object.keys(item), ...(editing ? [] : ["createdAt"])],
+            fieldNames: [
+              ...Object.keys(item),
+              ...(editing ? [] : ["createdAt"]),
+            ],
           });
-          toast(error.code === "permission-denied" ? "Permission denied while saving news." : "Could not save news.");
+          toast(
+            error.code === "permission-denied"
+              ? "Permission denied while saving news."
+              : "Could not save news.",
+          );
+        } finally {
+          button.disabled = false;
         }
-        finally { button.disabled = false; }
       });
       $("#cancelNewsEdit").addEventListener("click", () => {
         clearNewsForm();
@@ -3800,13 +4171,14 @@
       initStatic();
       renderAll();
       if (isFirebaseConfigured()) startFirebase();
-      else toast("Preview mode Â· configure Firebase to go live");
+      else toast("Preview mode · configure Firebase to go live");
 
       /* =========================================
    GLOBAL CLICK LIGHTNING
    ========================================= */
       document.addEventListener("click", (event) => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+          return;
 
         const lightning = document.createElement("div");
         lightning.className = "click-lightning";
